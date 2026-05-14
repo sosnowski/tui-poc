@@ -6,6 +6,7 @@ import type {
 	Collection,
 	HttpMethod,
 	KV,
+	Preset,
 	Request,
 	RequestDetails,
 	SampleResponse,
@@ -41,7 +42,25 @@ export function initCollections(
 	loadedDetails: Record<string, RequestDetails>,
 ): void {
 	setCollectionsSig(loadedCollections);
-	setRequestDetailsMap(normalizeDetailsMap(loadedDetails));
+	setPresetsMap(
+		Object.fromEntries(
+			Object.entries(loadedDetails).map(([id, details]) => {
+				const req = findRequest(loadedCollections, id);
+				const syncedPathParams = req
+					? syncPathParams(req.url, details.pathParams)
+					: details.pathParams;
+				return [
+					id,
+					{
+						":default": {
+							...detailsToPreset(details),
+							pathParams: syncedPathParams,
+						},
+					},
+				];
+			}),
+		),
+	);
 
 	const allIds = collectAllRequestIds(loadedCollections);
 	if (allIds.length > 0) {
@@ -96,7 +115,7 @@ export function togglePin(id: string): void {
 	});
 }
 
-const [requestDetailsMap, setRequestDetailsMap] = createSignal<Record<string, RequestDetails>>({});
+const [presetsMap, setPresetsMap] = createSignal<Record<string, Record<string, Preset>>>({});
 
 const EMPTY_REQUEST: RequestDetails = {
 	method: "GET",
@@ -108,10 +127,18 @@ const EMPTY_REQUEST: RequestDetails = {
 	bodyType: "none",
 };
 
+const EMPTY_PRESET: Preset = {
+	pathParams: [],
+	params: [],
+	headers: [],
+	body: null,
+	bodyType: "none",
+};
+
 export const hasActiveRequest = createMemo<boolean>(() => {
 	const id = activeRequestId();
 	if (!id) return false;
-	if (requestDetailsMap()[id]) return true;
+	if (presetsMap()[id]) return true;
 	return !!findRequest(collections(), id);
 });
 
@@ -119,11 +146,12 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 	const id = activeRequestId();
 	if (!id) return EMPTY_REQUEST;
 
-	const existing = requestDetailsMap()[id];
-	if (existing) return existing;
-
 	const collReq = findRequest(collections(), id);
-	if (collReq) {
+	if (!collReq) return EMPTY_REQUEST;
+
+	const presets = presetsMap()[id];
+	const defaultPreset = presets?.[":default"];
+	if (!defaultPreset) {
 		return {
 			method: collReq.method,
 			url: collReq.url,
@@ -135,41 +163,62 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 		};
 	}
 
-	return EMPTY_REQUEST;
+	return {
+		method: collReq.method,
+		url: collReq.url,
+		pathParams: syncPathParams(collReq.url, defaultPreset.pathParams),
+		params: defaultPreset.params,
+		headers: defaultPreset.headers,
+		body: defaultPreset.body,
+		bodyType: defaultPreset.bodyType,
+	};
 });
 
+function detailsToPreset(details: RequestDetails): Preset {
+	return {
+		pathParams: details.pathParams,
+		params: details.params,
+		headers: details.headers,
+		body: details.body,
+		bodyType: details.bodyType,
+	};
+}
+
 function updateActive(updater: (r: RequestDetails) => RequestDetails): void {
-	setRequestDetailsMap((prev) => {
+	setPresetsMap((prev) => {
 		const id = activeRequestId();
-		const cur = prev[id] ?? activeRequest();
-		return { ...prev, [id]: updater(cur) };
+		const cur = activeRequest();
+		const next = updater(cur);
+		return {
+			...prev,
+			[id]: {
+				...(prev[id] ?? {}),
+				":default": {
+					pathParams: next.pathParams,
+					params: next.params,
+					headers: next.headers,
+					body: next.body,
+					bodyType: next.bodyType,
+				},
+			},
+		};
 	});
 }
 
-function normalizeDetailsMap(
-	detailsMap: Record<string, RequestDetails>,
-): Record<string, RequestDetails> {
-	return Object.fromEntries(
-		Object.entries(detailsMap).map(([id, details]) => [
-			id,
-			{ ...details, pathParams: syncPathParams(details.url, details.pathParams) },
-		]),
-	);
-}
-
 export function requestMethod(id: string, fallback: HttpMethod): HttpMethod {
-	return requestDetailsMap()[id]?.method ?? fallback;
+	const req = findRequest(collections(), id);
+	return req?.method ?? fallback;
 }
 
 export function setActiveRequestMethod(method: HttpMethod): void {
-	updateActive((r) => ({ ...r, method }));
-
 	const id = activeRequestId();
+	setCollectionsSig((prev) => mapRequests(prev, id, (r) => ({ ...r, method })));
+
 	const req = findRequest(collections(), id);
 	const colPath = findCollectionPath(collections(), id);
 	if (req && colPath) {
-		const details = requestDetailsMap()[id] ?? activeRequest();
-		persistSaveRequest(colPath, req.name, { ...details, method }, slugFromId(id));
+		const details = buildMergedDetails(id);
+		persistSaveRequest(colPath, req.name, details, slugFromId(id));
 	}
 
 	pushToast(`method: ${method}`, "ok");
@@ -195,7 +244,7 @@ export function setActiveRequestName(name: string): void {
 	setCollectionsSig((prev) => mapRequests(prev, id, (r) => ({ ...r, name })));
 
 	if (colPath && oldReq) {
-		const details = requestDetailsMap()[id] ?? activeRequest();
+		const details = buildMergedDetails(id);
 		const oldSlug = slugFromId(id);
 		const newSlug = slugify(name) || "untitled";
 		persistSaveRequest(colPath, name, details, oldSlug !== newSlug ? oldSlug : undefined);
@@ -203,12 +252,12 @@ export function setActiveRequestName(name: string): void {
 		if (oldSlug !== newSlug) {
 			const newId = `${colPath}/${newSlug}`;
 			setCollectionsSig((prev) => mapRequests(prev, id, (r) => ({ ...r, id: newId })));
-			setRequestDetailsMap((prev) => {
+			setPresetsMap((prev) => {
 				const next = { ...prev };
-				const d = next[id];
-				if (d) {
+				const p = next[id];
+				if (p) {
 					delete next[id];
-					next[newId] = d;
+					next[newId] = p;
 				}
 				return next;
 			});
@@ -219,7 +268,20 @@ export function setActiveRequestName(name: string): void {
 }
 
 export function setActiveRequestUrl(url: string): void {
-	updateActive((r) => ({ ...r, url, pathParams: syncPathParams(url, r.pathParams) }));
+	const id = activeRequestId();
+	setCollectionsSig((prev) => mapRequests(prev, id, (r) => ({ ...r, url })));
+
+	// Resync path param keys for ALL presets of this request
+	setPresetsMap((prev) => {
+		const requestPresets = prev[id];
+		if (!requestPresets) return prev;
+		const next: Record<string, Preset> = {};
+		for (const [name, preset] of Object.entries(requestPresets)) {
+			next[name] = { ...preset, pathParams: syncPathParams(url, preset.pathParams) };
+		}
+		return { ...prev, [id]: next };
+	});
+
 	scheduleDebouncedSave();
 }
 
@@ -255,7 +317,7 @@ function replacePathParamKey(url: string, oldKey: string, newKey: string): strin
 	const splitAt = url.search(/[?#]/);
 	const path = splitAt === -1 ? url : url.slice(0, splitAt);
 	const suffix = splitAt === -1 ? "" : url.slice(splitAt);
-	const keyPattern = new RegExp(`(^|/):${escapeRegExp(oldKey)}(?=$|/|[^A-Za-z0-9_])`, "g");
+	const keyPattern = new RegExp(`(^|\/):${escapeRegExp(oldKey)}(?=$|\/|[^A-Za-z0-9_])`, "g");
 
 	return `${path.replace(keyPattern, `$1:${newKey}`)}${suffix}`;
 }
@@ -318,39 +380,45 @@ export function setParamCell(idx: number, col: 0 | 1 | 2, value: string): void {
 }
 
 export function setPathParamCell(idx: number, col: 0 | 1 | 2, value: string): void {
-	updateActive((r) => ({
-		...r,
-		...updatePathParam(r, idx, col, value),
-	}));
-	scheduleDebouncedSave();
-}
-
-function updatePathParam(
-	request: RequestDetails,
-	idx: number,
-	col: 0 | 1 | 2,
-	value: string,
-): Pick<RequestDetails, "url" | "pathParams"> {
-	const current = request.pathParams[idx];
-	if (!current) return { url: request.url, pathParams: request.pathParams };
-
 	if (col === 0) {
+		const id = activeRequestId();
+		const req = findRequest(collections(), id);
+		if (!req) return;
+		const current = activeRequest().pathParams[idx];
+		if (!current) return;
 		const key = normalizePathParamKey(value);
-		if (!key) return { url: request.url, pathParams: request.pathParams };
+		if (!key) return;
+		const newUrl = replacePathParamKey(req.url, current.key, key);
 
-		const url = replacePathParamKey(request.url, current.key, key);
-		const pathParams = request.pathParams.map((p, i) => (i === idx ? { ...p, key } : p));
-		return { url, pathParams: syncPathParams(url, pathParams) };
+		// Update URL in collections (request-level)
+		setCollectionsSig((prev) => mapRequests(prev, id, (r) => ({ ...r, url: newUrl })));
+
+		// Update path param keys for ALL presets
+		setPresetsMap((prev) => {
+			const requestPresets = prev[id];
+			if (!requestPresets) return prev;
+			const next: Record<string, Preset> = {};
+			for (const [name, preset] of Object.entries(requestPresets)) {
+				next[name] = {
+					...preset,
+					pathParams: preset.pathParams.map((p, i) =>
+						i === idx ? { ...p, key } : p,
+					),
+				};
+			}
+			return { ...prev, [id]: next };
+		});
+	} else {
+		updateActive((r) => ({
+			...r,
+			pathParams: r.pathParams.map((p, i) => {
+				if (i !== idx) return p;
+				if (col === 1) return { ...p, value };
+				return { ...p, desc: value };
+			}),
+		}));
 	}
-
-	return {
-		url: request.url,
-		pathParams: request.pathParams.map((p, i) => {
-			if (i !== idx) return p;
-			if (col === 1) return { ...p, value };
-			return { ...p, desc: value };
-		}),
-	};
+	scheduleDebouncedSave();
 }
 
 function scheduleDebouncedSave(): void {
@@ -358,8 +426,24 @@ function scheduleDebouncedSave(): void {
 	const req = findRequest(collections(), id);
 	const colPath = findCollectionPath(collections(), id);
 	if (!colPath || !req) return;
-	const details = requestDetailsMap()[id] ?? activeRequest();
+	const details = buildMergedDetails(id);
 	debouncedSaveRequest(colPath, id, req.name, details);
+}
+
+function buildMergedDetails(id: string): RequestDetails {
+	const req = findRequest(collections(), id);
+	if (!req) return EMPTY_REQUEST;
+	const presets = presetsMap()[id];
+	const defaultPreset = presets?.[":default"] ?? EMPTY_PRESET;
+	return {
+		method: req.method,
+		url: req.url,
+		pathParams: syncPathParams(req.url, defaultPreset.pathParams),
+		params: defaultPreset.params,
+		headers: defaultPreset.headers,
+		body: defaultPreset.body,
+		bodyType: defaultPreset.bodyType,
+	};
 }
 
 function insertChild(nodes: Collection[], parentId: string, child: Collection): Collection[] {
@@ -421,7 +505,7 @@ export function deleteRequest(): void {
 
 	setPinnedRequestIdsSig((prev) => prev.filter((id) => id !== reqId));
 
-	setRequestDetailsMap((prev) => {
+	setPresetsMap((prev) => {
 		const next = { ...prev };
 		delete next[reqId];
 		return next;
@@ -453,7 +537,7 @@ export function moveRequest(targetCollectionId: string): void {
 	const req = findRequest(collections(), reqId);
 	if (!req) return;
 
-	const details = requestDetailsMap()[reqId];
+	const presets = presetsMap()[reqId];
 
 	setCollectionsSig((prev) => {
 		const after = removeRequest(prev, reqId);
@@ -462,11 +546,11 @@ export function moveRequest(targetCollectionId: string): void {
 
 	persistMoveRequest(reqId, targetCollectionId, req.name).then((newId) => {
 		setCollectionsSig((prev) => mapRequests(prev, reqId, (r) => ({ ...r, id: newId })));
-		if (details) {
-			setRequestDetailsMap((prev) => {
+		if (presets) {
+			setPresetsMap((prev) => {
 				const next = { ...prev };
 				delete next[reqId];
-				next[newId] = details;
+				next[newId] = presets;
 				return next;
 			});
 		}
@@ -519,6 +603,15 @@ export function createNewRequest(method: HttpMethod): void {
 
 	setNewRequestTargetSig(null);
 
+	const defaultPreset: Preset = {
+		pathParams: [],
+		params: [],
+		headers: [],
+		body: null,
+		bodyType: "none",
+	};
+	setPresetsMap((prev) => ({ ...prev, [id]: { ":default": defaultPreset } }));
+
 	const details: RequestDetails = {
 		method,
 		url: "",
@@ -528,8 +621,6 @@ export function createNewRequest(method: HttpMethod): void {
 		body: null,
 		bodyType: "none",
 	};
-	setRequestDetailsMap((prev) => ({ ...prev, [id]: details }));
-
 	persistSaveRequest(colPath, name, details);
 
 	setActiveRequestIdSig(id);

@@ -1,5 +1,14 @@
 {
   "name": "Login Request",
   "method": "POST",
-  "url": "{{base_url}}/auth/login"
+  "url": "{{base_url}}/auth/login",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "none"
+    }
+  }
 }

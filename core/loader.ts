@@ -111,14 +111,16 @@ async function loadRequestFile(
 			url: data.url ?? "",
 		};
 
+		const defaultPreset = data.presets?.[":default"];
+
 		const details: RequestDetails = {
 			method,
 			url: data.url ?? "",
-			pathParams: normalizeKVArray(data.pathParams),
-			params: normalizeKVArray(data.params),
-			headers: normalizeKVArray(data.headers),
-			body: data.body ?? null,
-			bodyType: data.bodyType ?? "none",
+			pathParams: normalizeKVArray(defaultPreset?.pathParams),
+			params: normalizeKVArray(defaultPreset?.params),
+			headers: normalizeKVArray(defaultPreset?.headers),
+			body: defaultPreset?.body ?? null,
+			bodyType: defaultPreset?.bodyType ?? "none",
 		};
 
 		return { request, details };

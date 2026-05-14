@@ -71,6 +71,12 @@ export function RequestEditor() {
 					</box>
 
 					<box flexShrink={0} height={1}>
+						<text fg={t().textDim} attributes={TextAttributes.DIM}>
+							preset: :default
+						</text>
+					</box>
+
+					<box flexShrink={0} height={1}>
 						<Tabs tabs={tabs()} active={editorTab()} onSelect={setEditorTab} />
 					</box>
 

@@ -1,5 +1,14 @@
 {
   "name": "Create post",
   "method": "POST",
-  "url": "{{base_url}}/posts"
+  "url": "{{base_url}}/posts",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "none"
+    }
+  }
 }

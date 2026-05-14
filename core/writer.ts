@@ -13,11 +13,15 @@ function buildRequestFile(name: string, details: RequestDetails): RequestFile {
 		name,
 		method: details.method,
 		url: details.url,
-		...(details.pathParams.length > 0 && { pathParams: details.pathParams }),
-		...(details.params.length > 0 && { params: details.params }),
-		...(details.headers.length > 0 && { headers: details.headers }),
-		...(details.body != null && { body: details.body }),
-		...(details.bodyType !== "none" && { bodyType: details.bodyType }),
+		presets: {
+			":default": {
+				pathParams: details.pathParams,
+				params: details.params,
+				headers: details.headers,
+				body: details.body,
+				bodyType: details.bodyType,
+			},
+		},
 	};
 }
 

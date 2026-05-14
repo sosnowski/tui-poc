@@ -2,37 +2,43 @@
   "name": "Get user by id",
   "method": "GET",
   "url": "{{base_url}}/users/:id",
-  "pathParams": [
-    {
-      "key": "id",
-      "value": "7",
-      "enabled": true,
-      "desc": "from :id"
+  "presets": {
+    ":default": {
+      "pathParams": [
+        {
+          "key": "id",
+          "value": "7",
+          "enabled": true,
+          "desc": "from :id"
+        }
+      ],
+      "params": [
+        {
+          "key": "include",
+          "value": "address,company",
+          "enabled": true,
+          "desc": "expand related"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Bearer {{api_token}}",
+          "enabled": true
+        },
+        {
+          "key": "X-Request-Id",
+          "value": "{{$randomUUID}}",
+          "enabled": true
+        }
+      ],
+      "body": null,
+      "bodyType": "none"
     }
-  ],
-  "params": [
-    {
-      "key": "include",
-      "value": "address,company",
-      "enabled": true,
-      "desc": "expand related"
-    }
-  ],
-  "headers": [
-    {
-      "key": "Accept",
-      "value": "application/json",
-      "enabled": true
-    },
-    {
-      "key": "Authorization",
-      "value": "Bearer {{api_token}}",
-      "enabled": true
-    },
-    {
-      "key": "X-Request-Id",
-      "value": "{{$randomUUID}}",
-      "enabled": true
-    }
-  ]
+  }
 }

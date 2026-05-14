@@ -6,6 +6,7 @@ export {
 	type KV,
 	type Request,
 	type Collection,
+	type Preset,
 	type RequestDetails,
 	type RequestFile,
 	type ResponseHeader,

@@ -10,7 +10,7 @@ import {
 	type RequestDetails,
 	type LoadResult,
 } from "@tuipostman/core";
-import { COLLECTIONS, REQUEST_DETAILS } from "../data";
+import { COLLECTIONS, REQUEST_PRESETS } from "../data";
 
 let dataDir = join(import.meta.dir, "..", "..", "..", "data");
 
@@ -28,42 +28,44 @@ export async function loadOrSeed(): Promise<LoadResult> {
 		return result;
 	}
 
-	await seedCollections(COLLECTIONS, REQUEST_DETAILS);
+	await seedCollections(COLLECTIONS, REQUEST_PRESETS);
 	return readCollections(dataDir);
 }
 
 async function seedCollections(
 	cols: Collection[],
-	detailsMap: Record<string, RequestDetails>,
+	presetsMap: Record<string, Record<string, import("../data/types").Preset>>,
 ): Promise<void> {
 	for (const col of cols) {
-		await seedCollection(col, "", detailsMap);
+		await seedCollection(col, "", presetsMap);
 	}
 }
 
 async function seedCollection(
 	col: Collection,
 	parentPath: string,
-	detailsMap: Record<string, RequestDetails>,
+	presetsMap: Record<string, Record<string, import("../data/types").Preset>>,
 ): Promise<void> {
 	const colPath = parentPath ? `${parentPath}/${col.name}` : col.name;
 	await createCollectionDir(dataDir, colPath);
 
 	for (const req of col.requests) {
-		const details = detailsMap[req.id] ?? {
+		const presets = presetsMap[req.id];
+		const defaultPreset = presets?.[":default"];
+		const details: RequestDetails = {
 			method: req.method,
 			url: req.url,
-			pathParams: [],
-			params: [],
-			headers: [],
-			body: null,
-			bodyType: "none" as const,
+			pathParams: defaultPreset?.pathParams ?? [],
+			params: defaultPreset?.params ?? [],
+			headers: defaultPreset?.headers ?? [],
+			body: defaultPreset?.body ?? null,
+			bodyType: defaultPreset?.bodyType ?? "none",
 		};
 		await saveRequest(dataDir, colPath, req.name, details);
 	}
 
 	for (const child of col.children) {
-		await seedCollection(child, colPath, detailsMap);
+		await seedCollection(child, colPath, presetsMap);
 	}
 }
 

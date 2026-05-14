@@ -1,5 +1,14 @@
 {
   "name": "Get post",
   "method": "GET",
-  "url": "{{base_url}}/posts/:id"
+  "url": "{{base_url}}/posts/:id",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "none"
+    }
+  }
 }

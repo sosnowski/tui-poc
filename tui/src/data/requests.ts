@@ -1,50 +1,50 @@
-// Per-request configuration (params, headers, body) used by the editor pane,
-// plus a canned response that we render in the response pane.
+// Per-request presets used by the editor pane.
+// Each request maps to a record of presets, keyed by name.
+// Every request has a ":default" preset with the base configuration.
 
-import type { RequestDetails, SampleResponse } from "./types";
+import type { Preset, SampleResponse } from "./types";
 
-export const REQUEST_DETAILS: Record<string, RequestDetails> = {
+export const REQUEST_PRESETS: Record<string, Record<string, Preset>> = {
 	r1: {
-		method: "GET",
-		url: "{{base_url}}/users",
-		pathParams: [],
-		params: [
-			{ key: "_limit", value: "20", enabled: true, desc: "page size" },
-			{ key: "_page", value: "1", enabled: true, desc: "page number" },
-			{ key: "q", value: "", enabled: false, desc: "search query" },
-		],
-		headers: [
-			{ key: "Accept", value: "application/json", enabled: true },
-			{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
-		],
-		body: null,
-		bodyType: "none",
+		":default": {
+			pathParams: [],
+			params: [
+				{ key: "_limit", value: "20", enabled: true, desc: "page size" },
+				{ key: "_page", value: "1", enabled: true, desc: "page number" },
+				{ key: "q", value: "", enabled: false, desc: "search query" },
+			],
+			headers: [
+				{ key: "Accept", value: "application/json", enabled: true },
+				{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
+			],
+			body: null,
+			bodyType: "none",
+		},
 	},
 	r2: {
-		method: "GET",
-		url: "{{base_url}}/users/:id",
-		pathParams: [{ key: "id", value: "7", enabled: true, desc: "from :id" }],
-		params: [
-			{ key: "include", value: "address,company", enabled: true, desc: "expand related" },
-		],
-		headers: [
-			{ key: "Accept", value: "application/json", enabled: true },
-			{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
-			{ key: "X-Request-Id", value: "{{$randomUUID}}", enabled: true },
-		],
-		body: null,
-		bodyType: "none",
+		":default": {
+			pathParams: [{ key: "id", value: "7", enabled: true, desc: "from :id" }],
+			params: [
+				{ key: "include", value: "address,company", enabled: true, desc: "expand related" },
+			],
+			headers: [
+				{ key: "Accept", value: "application/json", enabled: true },
+				{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
+				{ key: "X-Request-Id", value: "{{$randomUUID}}", enabled: true },
+			],
+			body: null,
+			bodyType: "none",
+		},
 	},
 	r3: {
-		method: "POST",
-		url: "{{base_url}}/users",
-		pathParams: [],
-		params: [],
-		headers: [
-			{ key: "Content-Type", value: "application/json", enabled: true },
-			{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
-		],
-		body: `{
+		":default": {
+			pathParams: [],
+			params: [],
+			headers: [
+				{ key: "Content-Type", value: "application/json", enabled: true },
+				{ key: "Authorization", value: "Bearer {{api_token}}", enabled: true },
+			],
+			body: `{
   "name": "Ada Lovelace",
   "email": "ada@analyticalengine.org",
   "username": "alovelace",
@@ -53,7 +53,8 @@ export const REQUEST_DETAILS: Record<string, RequestDetails> = {
     "zipcode": "WC1E"
   }
 }`,
-		bodyType: "json",
+			bodyType: "json",
+		},
 	},
 };
 

@@ -1,5 +1,14 @@
 {
   "name": "Update user",
   "method": "PATCH",
-  "url": "{{base_url}}/users/:id"
+  "url": "{{base_url}}/users/:id",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "none"
+    }
+  }
 }

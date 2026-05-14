@@ -23,6 +23,14 @@ export interface Collection {
 	requests: Request[];
 }
 
+export interface Preset {
+	pathParams: KV[];
+	params: KV[];
+	headers: KV[];
+	body: string | null;
+	bodyType: "none" | "json" | "form" | "binary";
+}
+
 export interface RequestDetails {
 	method: HttpMethod;
 	url: string;
@@ -37,11 +45,7 @@ export interface RequestFile {
 	name: string;
 	method: HttpMethod;
 	url: string;
-	pathParams?: KV[];
-	params?: KV[];
-	headers?: KV[];
-	body?: string | null;
-	bodyType?: "none" | "json" | "form" | "binary";
+	presets: Record<string, Preset>;
 }
 
 export interface ResponseHeader {
