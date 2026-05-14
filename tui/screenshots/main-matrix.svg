@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="720" viewBox="0 0 1170 720" font-family="ui-monospace, Menlo, monospace" font-size="14">
+<rect x="0" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="9" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="18" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="27" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="36" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="45" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="54" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="72" y="0" width="45" height="18" fill="rgb(8,18,16)"/>
+<rect x="117" y="0" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="144" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="162" y="0" width="81" height="18" fill="rgb(8,18,16)"/>
+<rect x="243" y="0" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="270" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="288" y="0" width="45" height="18" fill="rgb(8,18,16)"/>
+<rect x="333" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="351" y="0" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="378" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="396" y="0" width="72" height="18" fill="rgb(8,18,16)"/>
+<rect x="468" y="0" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="495" y="0" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="513" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="522" y="0" width="450" height="18" fill="rgb(8,18,16)"/>
+<rect x="972" y="0" width="189" height="18" fill="rgb(8,18,16)"/>
+<rect x="1161" y="0" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="0" y="18" width="378" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="18" width="792" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="36" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="54" y="36" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="36" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="216" y="36" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="36" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="405" y="36" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="432" y="36" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="441" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="450" y="36" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="459" y="36" width="108" height="18" fill="rgb(8,18,16)"/>
+<rect x="567" y="36" width="63" height="18" fill="rgb(8,18,16)"/>
+<rect x="630" y="36" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="657" y="36" width="351" height="18" fill="rgb(8,18,16)"/>
+<rect x="1008" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="1017" y="36" width="9" height="18" fill="rgb(57,255,140)"/>
+<rect x="1026" y="36" width="117" height="18" fill="rgb(57,255,140)"/>
+<rect x="1143" y="36" width="9" height="18" fill="rgb(57,255,140)"/>
+<rect x="1152" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="36" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="54" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="54" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="54" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="54" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="54" y="54" width="135" height="18" fill="rgb(10,21,18)"/>
+<rect x="189" y="54" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="216" y="54" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="54" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="54" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="54" width="774" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="54" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="72" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="72" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="126" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="144" y="72" width="225" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="72" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="522" y="72" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="585" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="603" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="621" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="639" y="72" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="675" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="693" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="711" y="72" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="747" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="765" y="72" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="783" y="72" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="828" y="72" width="333" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="72" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="90" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="90" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="90" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="234" y="90" width="135" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="90" width="774" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="90" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="108" width="54" height="18" fill="rgb(16,42,32)"/>
+<rect x="72" y="108" width="18" height="18" fill="rgb(16,42,32)"/>
+<rect x="90" y="108" width="54" height="18" fill="rgb(16,42,32)"/>
+<rect x="144" y="108" width="135" height="18" fill="rgb(16,42,32)"/>
+<rect x="279" y="108" width="81" height="18" fill="rgb(16,42,32)"/>
+<rect x="360" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="405" y="108" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="108" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="459" y="108" width="171" height="18" fill="rgb(10,21,18)"/>
+<rect x="630" y="108" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="675" y="108" width="225" height="18" fill="rgb(10,21,18)"/>
+<rect x="900" y="108" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="999" y="108" width="162" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="108" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="126" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="126" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="126" width="108" height="18" fill="rgb(10,21,18)"/>
+<rect x="243" y="126" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="126" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="423" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="126" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="126" width="144" height="18" fill="rgb(10,21,18)"/>
+<rect x="630" y="126" width="144" height="18" fill="rgb(10,21,18)"/>
+<rect x="774" y="126" width="387" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="126" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="144" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="144" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="144" width="108" height="18" fill="rgb(10,21,18)"/>
+<rect x="243" y="144" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="144" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="423" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="144" width="117" height="18" fill="rgb(10,21,18)"/>
+<rect x="549" y="144" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="630" y="144" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="693" y="144" width="117" height="18" fill="rgb(10,21,18)"/>
+<rect x="810" y="144" width="351" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="144" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="162" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="162" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="162" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="162" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="162" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="162" width="108" height="18" fill="rgb(10,21,18)"/>
+<rect x="243" y="162" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="162" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="378" y="162" width="792" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="180" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="180" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="180" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="180" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="180" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="126" y="180" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="144" y="180" width="225" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="180" width="801" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="198" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="198" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="198" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="198" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="198" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="198" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="234" y="198" width="135" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="198" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="198" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="198" width="72" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="198" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="198" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="531" y="198" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="576" y="198" width="72" height="18" fill="rgb(10,21,18)"/>
+<rect x="648" y="198" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="684" y="198" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="711" y="198" width="279" height="18" fill="rgb(10,21,18)"/>
+<rect x="990" y="198" width="171" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="198" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="216" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="216" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="216" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="216" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="216" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="216" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="216" y="216" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="216" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="216" width="774" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="216" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="234" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="234" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="234" width="108" height="18" fill="rgb(10,21,18)"/>
+<rect x="243" y="234" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="234" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="450" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="234" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="549" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="567" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="585" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="603" y="234" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="666" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="684" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="702" y="234" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="747" y="234" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="783" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="801" y="234" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="819" y="234" width="72" height="18" fill="rgb(10,21,18)"/>
+<rect x="891" y="234" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="1044" y="234" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="1098" y="234" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="1152" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="234" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="252" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="252" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="252" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="252" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="81" y="252" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="252" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="288" y="252" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="252" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="252" width="774" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="252" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="270" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="270" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="270" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="270" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="270" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="270" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="153" y="270" width="216" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="270" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="270" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="396" y="270" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="405" y="270" width="756" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="270" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="288" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="288" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="288" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="288" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="54" y="288" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="207" y="288" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="225" y="288" width="144" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="288" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="288" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="288" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="450" y="288" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="288" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="477" y="288" width="684" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="288" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="306" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="306" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="306" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="306" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="306" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="117" y="306" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="135" y="306" width="234" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="306" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="306" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="306" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="306" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="306" width="153" height="18" fill="rgb(10,21,18)"/>
+<rect x="639" y="306" width="522" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="306" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="324" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="324" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="324" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="324" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="72" y="324" width="72" height="18" fill="rgb(10,21,18)"/>
+<rect x="144" y="324" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="162" y="324" width="207" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="324" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="324" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="324" width="90" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="324" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="522" y="324" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="648" y="324" width="513" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="324" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="342" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="342" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="342" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="36" y="342" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="54" y="342" width="90" height="18" fill="rgb(10,21,18)"/>
+<rect x="144" y="342" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="162" y="342" width="207" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="342" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="342" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="342" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="477" y="342" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="342" width="216" height="18" fill="rgb(10,21,18)"/>
+<rect x="711" y="342" width="450" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="342" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="360" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="360" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="360" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="360" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="360" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="477" y="360" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="360" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="621" y="360" width="540" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="360" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="378" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="378" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="378" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="378" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="378" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="378" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="513" y="378" width="90" height="18" fill="rgb(10,21,18)"/>
+<rect x="603" y="378" width="558" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="378" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="396" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="396" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="396" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="396" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="396" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="396" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="522" y="396" width="639" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="396" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="414" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="414" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="414" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="414" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="414" width="72" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="414" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="522" y="414" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="621" y="414" width="540" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="414" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="432" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="432" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="432" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="432" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="432" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="432" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="513" y="432" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="612" y="432" width="549" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="432" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="450" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="450" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="450" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="450" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="450" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="450" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="450" width="99" height="18" fill="rgb(10,21,18)"/>
+<rect x="603" y="450" width="558" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="450" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="468" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="468" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="468" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="468" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="468" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="513" y="468" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="531" y="468" width="108" height="18" fill="rgb(10,21,18)"/>
+<rect x="639" y="468" width="522" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="468" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="486" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="486" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="486" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="486" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="486" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="477" y="486" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="486" width="657" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="486" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="504" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="504" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="504" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="504" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="450" y="504" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="504" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="513" y="504" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="594" y="504" width="567" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="504" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="522" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="522" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="522" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="522" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="450" y="522" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="522" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="513" y="522" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="594" y="522" width="567" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="522" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="540" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="540" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="540" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="540" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="540" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="441" y="540" width="720" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="540" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="558" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="558" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="558" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="558" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="558" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="558" width="729" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="558" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="576" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="576" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="576" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="576" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="576" width="81" height="18" fill="rgb(10,21,18)"/>
+<rect x="495" y="576" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="522" y="576" width="639" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="576" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="594" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="594" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="594" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="594" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="594" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="594" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="504" y="594" width="117" height="18" fill="rgb(10,21,18)"/>
+<rect x="621" y="594" width="540" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="594" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="612" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="612" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="612" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="612" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="612" width="117" height="18" fill="rgb(10,21,18)"/>
+<rect x="549" y="612" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="567" y="612" width="324" height="18" fill="rgb(10,21,18)"/>
+<rect x="891" y="612" width="270" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="612" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="630" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="630" width="360" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="630" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="630" width="45" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="630" width="36" height="18" fill="rgb(10,21,18)"/>
+<rect x="468" y="630" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="486" y="630" width="279" height="18" fill="rgb(10,21,18)"/>
+<rect x="765" y="630" width="396" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="630" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="648" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="9" y="648" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="18" y="648" width="90" height="18" fill="rgb(10,21,18)"/>
+<rect x="108" y="648" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="117" y="648" width="54" height="18" fill="rgb(10,21,18)"/>
+<rect x="171" y="648" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="180" y="648" width="63" height="18" fill="rgb(10,21,18)"/>
+<rect x="243" y="648" width="126" height="18" fill="rgb(10,21,18)"/>
+<rect x="369" y="648" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="387" y="648" width="27" height="18" fill="rgb(10,21,18)"/>
+<rect x="414" y="648" width="18" height="18" fill="rgb(10,21,18)"/>
+<rect x="432" y="648" width="729" height="18" fill="rgb(10,21,18)"/>
+<rect x="1161" y="648" width="9" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="666" width="1170" height="18" fill="rgb(10,21,18)"/>
+<rect x="0" y="684" width="9" height="18" fill="rgb(4,8,6)"/>
+<rect x="9" y="684" width="18" height="18" fill="rgb(4,8,6)"/>
+<rect x="27" y="684" width="225" height="18" fill="rgb(4,8,6)"/>
+<rect x="252" y="684" width="18" height="18" fill="rgb(4,8,6)"/>
+<rect x="270" y="684" width="144" height="18" fill="rgb(4,8,6)"/>
+<rect x="414" y="684" width="540" height="18" fill="rgb(4,8,6)"/>
+<rect x="954" y="684" width="207" height="18" fill="rgb(4,8,6)"/>
+<rect x="1161" y="684" width="9" height="18" fill="rgb(4,8,6)"/>
+<rect x="0" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="9" y="702" width="72" height="18" fill="rgb(57,255,140)"/>
+<rect x="81" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="90" y="702" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="108" y="702" width="63" height="18" fill="rgb(8,18,16)"/>
+<rect x="171" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="180" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="189" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="198" y="702" width="45" height="18" fill="rgb(8,18,16)"/>
+<rect x="243" y="702" width="54" height="18" fill="rgb(8,18,16)"/>
+<rect x="297" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="306" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="315" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="324" y="702" width="72" height="18" fill="rgb(8,18,16)"/>
+<rect x="396" y="702" width="81" height="18" fill="rgb(8,18,16)"/>
+<rect x="477" y="702" width="252" height="18" fill="rgb(8,18,16)"/>
+<rect x="729" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="738" y="702" width="45" height="18" fill="rgb(8,18,16)"/>
+<rect x="783" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="792" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="801" y="702" width="45" height="18" fill="rgb(8,18,16)"/>
+<rect x="846" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="855" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="864" y="702" width="54" height="18" fill="rgb(8,18,16)"/>
+<rect x="918" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="927" y="702" width="18" height="18" fill="rgb(8,18,16)"/>
+<rect x="945" y="702" width="54" height="18" fill="rgb(8,18,16)"/>
+<rect x="999" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="1008" y="702" width="27" height="18" fill="rgb(8,18,16)"/>
+<rect x="1035" y="702" width="54" height="18" fill="rgb(8,18,16)"/>
+<rect x="1089" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="1098" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<rect x="1107" y="702" width="54" height="18" fill="rgb(8,18,16)"/>
+<rect x="1161" y="702" width="9" height="18" fill="rgb(8,18,16)"/>
+<text x="0" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="9" y="14" fill="rgb(255,95,86)" font-weight="bold" font-style="normal" text-decoration="none">●</text>
+<text x="18" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="27" y="14" fill="rgb(255,189,46)" font-weight="bold" font-style="normal" text-decoration="none">●</text>
+<text x="36" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="45" y="14" fill="rgb(39,201,63)" font-weight="bold" font-style="normal" text-decoration="none">●</text>
+<text x="54" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="72" y="14" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">users</text>
+<text x="117" y="14" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> ⌘1</text>
+<text x="144" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="162" y="14" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">users/:id</text>
+<text x="243" y="14" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none"> ⌘2</text>
+<text x="270" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="288" y="14" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">users</text>
+<text x="333" y="14" fill="rgb(217,217,111)" font-weight="bold" font-style="normal" text-decoration="none"> *</text>
+<text x="351" y="14" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> ⌘3</text>
+<text x="378" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="396" y="14" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">comments</text>
+<text x="468" y="14" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> ⌘4</text>
+<text x="495" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="513" y="14" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">+</text>
+<text x="522" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                  </text>
+<text x="972" y="14" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">tui-postman · staging</text>
+<text x="1161" y="14" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="0" y="32" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">┌─collections────────────────────────────┐</text>
+<text x="378" y="32" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">┌─request──────────────────────────────────────────────────────────────────────────────┐</text>
+<text x="0" y="50" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="50" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">env </text>
+<text x="54" y="50" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">◆ staging</text>
+<text x="135" y="50" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> ─ 4 vars</text>
+<text x="216" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                 </text>
+<text x="369" y="50" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="50" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="405" y="50" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET</text>
+<text x="432" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="441" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="450" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="459" y="50" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">{{base_url}}</text>
+<text x="567" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">/users/</text>
+<text x="630" y="50" fill="rgb(31,207,106)" font-weight="normal" font-style="normal" text-decoration="none">:id</text>
+<text x="657" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                       </text>
+<text x="1008" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1017" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1026" y="50" fill="rgb(4,8,6)" font-weight="bold" font-style="normal" text-decoration="none">[ ▶ Send ] ⌘↵</text>
+<text x="1143" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1152" y="50" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1161" y="50" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="68" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="68" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="68" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">▾ </text>
+<text x="36" y="68" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">■ </text>
+<text x="54" y="68" fill="rgb(155,232,185)" font-weight="bold" font-style="normal" text-decoration="none">JSONPlaceholder</text>
+<text x="189" y="68" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none"> 11</text>
+<text x="216" y="68" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                 </text>
+<text x="369" y="68" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="68" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="68" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                      </text>
+<text x="1161" y="68" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="86" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="86" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ </text>
+<text x="36" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">▾ ▤ </text>
+<text x="72" y="86" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">users/</text>
+<text x="126" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> 5</text>
+<text x="144" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                         </text>
+<text x="369" y="86" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="86" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">1 </text>
+<text x="414" y="86" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Params</text>
+<text x="468" y="86" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none"> 1</text>
+<text x="486" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="504" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">2 </text>
+<text x="522" y="86" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="underline">Headers</text>
+<text x="585" y="86" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none"> 3</text>
+<text x="603" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="621" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">3 </text>
+<text x="639" y="86" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Body</text>
+<text x="675" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="693" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">4 </text>
+<text x="711" y="86" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Auth</text>
+<text x="747" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="765" y="86" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">5 </text>
+<text x="783" y="86" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Tests</text>
+<text x="828" y="86" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                     </text>
+<text x="1161" y="86" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="104" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="104" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="104" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="104" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="104" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET   </text>
+<text x="135" y="104" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> List users</text>
+<text x="234" y="104" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">               </text>
+<text x="369" y="104" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="104" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="104" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                      </text>
+<text x="1161" y="104" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="122" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="122" fill="rgb(47,90,77)" font-weight="bold" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="122" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">▸ </text>
+<text x="90" y="122" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET   </text>
+<text x="144" y="122" fill="rgb(168,255,200)" font-weight="bold" font-style="normal" text-decoration="none"> Get user by id</text>
+<text x="279" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">         </text>
+<text x="360" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="369" y="122" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="122" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="122" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="405" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="432" y="122" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">KEY</text>
+<text x="459" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                   </text>
+<text x="630" y="122" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">VALUE</text>
+<text x="675" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                         </text>
+<text x="900" y="122" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">DESCRIPTION</text>
+<text x="999" y="122" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                  </text>
+<text x="1161" y="122" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="140" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="140" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="140" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="140" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">POST  </text>
+<text x="135" y="140" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Create user</text>
+<text x="243" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">              </text>
+<text x="369" y="140" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="140" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="140" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">[×]</text>
+<text x="423" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="432" y="140" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">Accept</text>
+<text x="486" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                </text>
+<text x="630" y="140" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">application/json</text>
+<text x="774" y="140" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                           </text>
+<text x="1161" y="140" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="158" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="158" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="158" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="158" fill="rgb(155,217,111)" font-weight="bold" font-style="normal" text-decoration="none">PATCH </text>
+<text x="135" y="158" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Update user</text>
+<text x="243" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">              </text>
+<text x="369" y="158" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="158" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="387" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="158" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">[×]</text>
+<text x="423" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="432" y="158" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">Authorization</text>
+<text x="549" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">         </text>
+<text x="630" y="158" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">Bearer </text>
+<text x="693" y="158" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">{{api_token}}</text>
+<text x="810" y="158" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                       </text>
+<text x="1161" y="158" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="176" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="176" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="176" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ └─</text>
+<text x="72" y="176" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="176" fill="rgb(255,107,107)" font-weight="bold" font-style="normal" text-decoration="none">DELETE</text>
+<text x="135" y="176" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Delete user</text>
+<text x="243" y="176" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">              </text>
+<text x="369" y="176" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="378" y="176" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">└──────────────────────────────────────────────────────────────────────────────────────┘</text>
+<text x="0" y="194" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="194" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="194" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ </text>
+<text x="36" y="194" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">▾ ▤ </text>
+<text x="72" y="194" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">posts/</text>
+<text x="126" y="194" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> 4</text>
+<text x="144" y="194" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                         </text>
+<text x="369" y="194" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│┌─response─────────────────────────────────────────────────────────────────────────────┐</text>
+<text x="0" y="212" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="212" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="212" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="212" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="212" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET   </text>
+<text x="135" y="212" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> List posts</text>
+<text x="234" y="212" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">               </text>
+<text x="369" y="212" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="212" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="212" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">● 200 OK</text>
+<text x="468" y="212" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="486" y="212" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">time </text>
+<text x="531" y="212" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">184ms</text>
+<text x="576" y="212" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> · size </text>
+<text x="648" y="212" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">612B</text>
+<text x="684" y="212" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> · </text>
+<text x="711" y="212" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">application/json; charset=utf-8</text>
+<text x="990" y="212" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                   </text>
+<text x="1161" y="212" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="230" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="230" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="230" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="230" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="230" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET   </text>
+<text x="135" y="230" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Get post</text>
+<text x="216" y="230" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                 </text>
+<text x="369" y="230" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="230" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                      </text>
+<text x="1161" y="230" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="248" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="248" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ ├─</text>
+<text x="72" y="248" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="248" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">POST  </text>
+<text x="135" y="248" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Create post</text>
+<text x="243" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">              </text>
+<text x="369" y="248" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">1 </text>
+<text x="414" y="248" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="underline">Body</text>
+<text x="450" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="468" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">2 </text>
+<text x="486" y="248" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Headers</text>
+<text x="549" y="248" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none"> 7</text>
+<text x="567" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="585" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">3 </text>
+<text x="603" y="248" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Cookies</text>
+<text x="666" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="684" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">4 </text>
+<text x="702" y="248" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Tests</text>
+<text x="747" y="248" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none"> 2/2</text>
+<text x="783" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">  </text>
+<text x="801" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">5 </text>
+<text x="819" y="248" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">Timeline</text>
+<text x="891" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                 </text>
+<text x="1044" y="248" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">view: </text>
+<text x="1098" y="248" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">pretty</text>
+<text x="1152" y="248" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1161" y="248" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="266" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="266" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="266" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ │ └─</text>
+<text x="72" y="266" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="81" y="266" fill="rgb(95,217,217)" font-weight="bold" font-style="normal" text-decoration="none">GET   </text>
+<text x="135" y="266" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none"> Comments on post</text>
+<text x="288" y="266" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">         </text>
+<text x="369" y="266" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="266" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                      </text>
+<text x="1161" y="266" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="284" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="284" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="284" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ </text>
+<text x="36" y="284" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">▸ ▤ </text>
+<text x="72" y="284" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">albums/</text>
+<text x="135" y="284" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> 2</text>
+<text x="153" y="284" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                        </text>
+<text x="369" y="284" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="284" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="396" y="284" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">{</text>
+<text x="405" y="284" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                    </text>
+<text x="1161" y="284" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="302" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="302" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="302" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">▾ </text>
+<text x="36" y="302" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">■ </text>
+<text x="54" y="302" fill="rgb(155,232,185)" font-weight="bold" font-style="normal" text-decoration="none">Internal Services</text>
+<text x="207" y="302" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none"> 4</text>
+<text x="225" y="302" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                </text>
+<text x="369" y="302" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="302" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="302" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"id"</text>
+<text x="450" y="302" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="468" y="302" fill="rgb(217,217,111)" font-weight="normal" font-style="normal" text-decoration="none">7</text>
+<text x="477" y="302" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                                           </text>
+<text x="1161" y="302" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="320" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="320" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="320" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ </text>
+<text x="36" y="320" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">▸ ▤ </text>
+<text x="72" y="320" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">auth/</text>
+<text x="117" y="320" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> 2</text>
+<text x="135" y="320" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                          </text>
+<text x="369" y="320" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="320" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="320" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"name"</text>
+<text x="468" y="320" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="486" y="320" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Kurtis Weissnat"</text>
+<text x="639" y="320" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                         </text>
+<text x="1161" y="320" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="338" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="338" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="338" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│ </text>
+<text x="36" y="338" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">▸ ▤ </text>
+<text x="72" y="338" fill="rgb(95,176,136)" font-weight="normal" font-style="normal" text-decoration="none">billing/</text>
+<text x="144" y="338" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> 2</text>
+<text x="162" y="338" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                       </text>
+<text x="369" y="338" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="338" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="338" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"username"</text>
+<text x="504" y="338" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="522" y="338" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Elwyn.Skiles"</text>
+<text x="648" y="338" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                        </text>
+<text x="1161" y="338" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="356" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="356" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="356" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none">▸ </text>
+<text x="36" y="356" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">■ </text>
+<text x="54" y="356" fill="rgb(155,232,185)" font-weight="bold" font-style="normal" text-decoration="none">Scratchpad</text>
+<text x="144" y="356" fill="rgb(53,106,82)" font-weight="bold" font-style="normal" text-decoration="none"> 1</text>
+<text x="162" y="356" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                       </text>
+<text x="369" y="356" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="356" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="356" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"email"</text>
+<text x="477" y="356" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="495" y="356" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Telly.Hoeger@billy.biz"</text>
+<text x="711" y="356" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                 </text>
+<text x="1161" y="356" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="374" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="374" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="374" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="374" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="374" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"phone"</text>
+<text x="477" y="374" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="495" y="374" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"210.067.6132"</text>
+<text x="621" y="374" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                           </text>
+<text x="1161" y="374" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="392" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="392" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="392" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="392" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="392" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"website"</text>
+<text x="495" y="392" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="513" y="392" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"elvis.io"</text>
+<text x="603" y="392" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                             </text>
+<text x="1161" y="392" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="410" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="410" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="410" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="410" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="410" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"address"</text>
+<text x="495" y="410" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: {</text>
+<text x="522" y="410" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                       </text>
+<text x="1161" y="410" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="428" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="428" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="428" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="428" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="428" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"street"</text>
+<text x="504" y="428" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="522" y="428" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Rex Trail"</text>
+<text x="621" y="428" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                           </text>
+<text x="1161" y="428" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="446" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="446" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="446" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="446" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="446" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"suite"</text>
+<text x="495" y="446" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="513" y="446" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Suite 280"</text>
+<text x="612" y="446" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                            </text>
+<text x="1161" y="446" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="464" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="464" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="464" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="464" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="464" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"city"</text>
+<text x="486" y="464" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="504" y="464" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Howemouth"</text>
+<text x="603" y="464" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                             </text>
+<text x="1161" y="464" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="482" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="482" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="482" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="482" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="482" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"zipcode"</text>
+<text x="513" y="482" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="531" y="482" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"58804-1099"</text>
+<text x="639" y="482" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                         </text>
+<text x="1161" y="482" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="500" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="500" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="500" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="500" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="500" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"geo"</text>
+<text x="477" y="500" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: {</text>
+<text x="504" y="500" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                         </text>
+<text x="1161" y="500" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="518" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="518" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="518" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="518" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">       </text>
+<text x="450" y="518" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"lat"</text>
+<text x="495" y="518" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="513" y="518" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"24.8918"</text>
+<text x="594" y="518" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                              </text>
+<text x="1161" y="518" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="536" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="536" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="536" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="536" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">       </text>
+<text x="450" y="536" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"lng"</text>
+<text x="495" y="536" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="513" y="536" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"21.8984"</text>
+<text x="594" y="536" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                               </text>
+<text x="1161" y="536" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="554" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="554" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="554" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="554" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="554" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">}</text>
+<text x="441" y="554" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                </text>
+<text x="1161" y="554" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="572" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="572" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="572" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="572" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="572" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">},</text>
+<text x="432" y="572" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                 </text>
+<text x="1161" y="572" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="590" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="590" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="590" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="590" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="590" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"company"</text>
+<text x="495" y="590" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: {</text>
+<text x="522" y="590" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                       </text>
+<text x="1161" y="590" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="608" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="608" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="608" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="608" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="608" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"name"</text>
+<text x="486" y="608" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="504" y="608" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Johns Group"</text>
+<text x="621" y="608" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                                                           </text>
+<text x="1161" y="608" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="626" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="626" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="626" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="626" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="626" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"catchPhrase"</text>
+<text x="549" y="626" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="567" y="626" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"Configurable multimedia task-force"</text>
+<text x="891" y="626" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">,                             </text>
+<text x="1161" y="626" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="644" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="644" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                        </text>
+<text x="369" y="644" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="644" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">     </text>
+<text x="432" y="644" fill="rgb(95,217,217)" font-weight="normal" font-style="normal" text-decoration="none">"bs"</text>
+<text x="468" y="644" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">: </text>
+<text x="486" y="644" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">"generate enterprise e-tailers"</text>
+<text x="765" y="644" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                            </text>
+<text x="1161" y="644" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="662" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="9" y="662" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="18" y="662" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">─── press </text>
+<text x="108" y="662" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">n</text>
+<text x="117" y="662" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> add, </text>
+<text x="171" y="662" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">/</text>
+<text x="180" y="662" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> search</text>
+<text x="243" y="662" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">              </text>
+<text x="369" y="662" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">││</text>
+<text x="387" y="662" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">   </text>
+<text x="414" y="662" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">},</text>
+<text x="432" y="662" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                                                 </text>
+<text x="1161" y="662" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="0" y="680" fill="rgb(31,58,50)" font-weight="normal" font-style="normal" text-decoration="none">└────────────────────────────────────────┘└──────────────────────────────────────────────────────────────────────────────────────┘</text>
+<text x="0" y="698" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="9" y="698" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">/ </text>
+<text x="27" y="698" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">type a command, or press </text>
+<text x="252" y="698" fill="rgb(95,176,136)" font-weight="bold" font-style="normal" text-decoration="none">⌘K</text>
+<text x="270" y="698" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> for the palette</text>
+<text x="414" y="698" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                                                            </text>
+<text x="954" y="698" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">─ 18 commands available</text>
+<text x="1161" y="698" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="0" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="9" y="716" fill="rgb(8,18,16)" font-weight="bold" font-style="normal" text-decoration="none"> NORMAL </text>
+<text x="81" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="90" y="716" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">◆ </text>
+<text x="108" y="716" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">staging</text>
+<text x="171" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="180" y="716" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="189" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="198" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">pane </text>
+<text x="243" y="716" fill="rgb(155,232,185)" font-weight="normal" font-style="normal" text-decoration="none">editor</text>
+<text x="297" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="306" y="716" fill="rgb(47,90,77)" font-weight="normal" font-style="normal" text-decoration="none">│</text>
+<text x="315" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="324" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none">request </text>
+<text x="396" y="716" fill="rgb(57,255,140)" font-weight="normal" font-style="normal" text-decoration="none">users/:id</text>
+<text x="477" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none">                            </text>
+<text x="729" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">/</text>
+<text x="738" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> cmd </text>
+<text x="783" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="792" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">e</text>
+<text x="801" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> env </text>
+<text x="846" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="855" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">h</text>
+<text x="864" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> hist </text>
+<text x="918" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="927" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">⌘↵</text>
+<text x="945" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> send </text>
+<text x="999" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1008" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">tab</text>
+<text x="1035" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> pane </text>
+<text x="1089" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+<text x="1098" y="716" fill="rgb(57,255,140)" font-weight="bold" font-style="normal" text-decoration="none">q</text>
+<text x="1107" y="716" fill="rgb(53,106,82)" font-weight="normal" font-style="normal" text-decoration="none"> quit </text>
+<text x="1161" y="716" fill="rgb(255,255,255)" font-weight="normal" font-style="normal" text-decoration="none"> </text>
+</svg>

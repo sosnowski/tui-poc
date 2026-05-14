@@ -1,0 +1,5 @@
+{
+  "name": "Get Posts",
+  "method": "GET",
+  "url": "{{base_url}}/posts"
+}

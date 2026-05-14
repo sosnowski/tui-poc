@@ -1,0 +1,5 @@
+{
+  "name": "Delete user",
+  "method": "DELETE",
+  "url": "{{base_url}}/users/:id"
+}

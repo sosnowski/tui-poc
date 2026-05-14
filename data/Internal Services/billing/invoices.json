@@ -1,0 +1,5 @@
+{
+  "name": "Invoices",
+  "method": "GET",
+  "url": "{{base_url}}/billing/invoices"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Get album",
+  "method": "GET",
+  "url": "{{base_url}}/albums/:album_id/:owner_id/:photo_id",
+  "pathParams": [
+    {
+      "key": "album_id",
+      "value": "Something",
+      "enabled": true
+    },
+    {
+      "key": "owner_id",
+      "value": "Else",
+      "enabled": true
+    },
+    {
+      "key": "photo_id",
+      "value": "Here",
+      "enabled": true,
+      "desc": "Id of the photo you want to see"
+    }
+  ]
+}

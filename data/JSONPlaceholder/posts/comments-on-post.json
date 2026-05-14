@@ -1,0 +1,5 @@
+{
+  "name": "Comments on post",
+  "method": "GET",
+  "url": "{{base_url}}/posts/:id/comments"
+}

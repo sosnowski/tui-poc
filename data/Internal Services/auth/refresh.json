@@ -1,0 +1,5 @@
+{
+  "name": "Refresh",
+  "method": "POST",
+  "url": "{{base_url}}/auth/refresh"
+}

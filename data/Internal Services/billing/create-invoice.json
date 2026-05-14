@@ -1,0 +1,5 @@
+{
+  "name": "Create invoice",
+  "method": "POST",
+  "url": "{{base_url}}/billing/invoices"
+}

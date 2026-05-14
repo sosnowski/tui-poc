@@ -1,0 +1,5 @@
+{
+  "name": "List albums",
+  "method": "GET",
+  "url": "{{base_url}}/albums"
+}

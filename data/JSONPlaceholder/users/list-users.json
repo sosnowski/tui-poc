@@ -1,0 +1,37 @@
+{
+  "name": "List users",
+  "method": "GET",
+  "url": "{{base_url}}/users",
+  "params": [
+    {
+      "key": "_limit",
+      "value": "20",
+      "enabled": true,
+      "desc": "page size"
+    },
+    {
+      "key": "_page",
+      "value": "1",
+      "enabled": true,
+      "desc": "page number"
+    },
+    {
+      "key": "q",
+      "value": "",
+      "enabled": false,
+      "desc": "search query"
+    }
+  ],
+  "headers": [
+    {
+      "key": "Accept",
+      "value": "application/json",
+      "enabled": true
+    },
+    {
+      "key": "Authorization",
+      "value": "Bearer {{api_token}}",
+      "enabled": true
+    }
+  ]
+}

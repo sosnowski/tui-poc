@@ -1,0 +1,5 @@
+{
+  "name": "Create post",
+  "method": "POST",
+  "url": "{{base_url}}/posts"
+}

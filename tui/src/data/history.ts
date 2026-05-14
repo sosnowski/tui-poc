@@ -1,0 +1,86 @@
+// Sample request history shown in the history modal.
+
+import type { HistoryEntry } from "./types";
+
+export const HISTORY: HistoryEntry[] = [
+	{
+		id: "h1",
+		method: "GET",
+		url: "{{base_url}}/users/7",
+		status: 200,
+		timeMs: 184,
+		when: "12:42:08",
+	},
+	{
+		id: "h2",
+		method: "GET",
+		url: "{{base_url}}/users",
+		status: 200,
+		timeMs: 211,
+		when: "12:41:55",
+	},
+	{
+		id: "h3",
+		method: "POST",
+		url: "{{base_url}}/posts",
+		status: 201,
+		timeMs: 342,
+		when: "12:38:12",
+	},
+	{
+		id: "h4",
+		method: "GET",
+		url: "{{base_url}}/posts/1/comments",
+		status: 200,
+		timeMs: 156,
+		when: "12:35:01",
+	},
+	{
+		id: "h5",
+		method: "DELETE",
+		url: "{{base_url}}/users/12",
+		status: 204,
+		timeMs: 98,
+		when: "12:30:44",
+	},
+	{
+		id: "h6",
+		method: "PATCH",
+		url: "{{base_url}}/users/3",
+		status: 422,
+		timeMs: 124,
+		when: "12:28:19",
+	},
+	{
+		id: "h7",
+		method: "GET",
+		url: "{{base_url}}/users/999",
+		status: 404,
+		timeMs: 87,
+		when: "12:25:03",
+	},
+	{
+		id: "h8",
+		method: "POST",
+		url: "{{base_url}}/auth/login",
+		status: 200,
+		timeMs: 412,
+		when: "12:20:11",
+	},
+	{
+		id: "h9",
+		method: "GET",
+		url: "{{base_url}}/albums",
+		status: 200,
+		timeMs: 167,
+		when: "12:18:32",
+	},
+	{
+		id: "h10",
+		method: "GET",
+		url: "{{base_url}}/billing/invoices",
+		status: 500,
+		timeMs: 1024,
+		when: "12:14:09",
+	},
+];

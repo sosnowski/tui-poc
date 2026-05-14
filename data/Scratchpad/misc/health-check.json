@@ -1,0 +1,5 @@
+{
+  "name": "Health check",
+  "method": "GET",
+  "url": "https://httpbin.org/get"
+}

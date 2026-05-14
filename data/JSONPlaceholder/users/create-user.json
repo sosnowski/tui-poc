@@ -1,0 +1,19 @@
+{
+  "name": "Create user",
+  "method": "POST",
+  "url": "{{base_url}}/users",
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json",
+      "enabled": true
+    },
+    {
+      "key": "Authorization",
+      "value": "Bearer {{api_token}}",
+      "enabled": true
+    }
+  ],
+  "body": "{\n  \"name\": \"Ada Lovelace\",\n  \"email\": \"ada@analyticalengine.org\",\n  \"username\": \"alovelace\",\n  \"address\": {\n    \"city\": \"London\",\n    \"zipcode\": \"WC1E\"\n  }\n}",
+  "bodyType": "json"
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Update user",
+  "method": "PATCH",
+  "url": "{{base_url}}/users/:id"
+}
