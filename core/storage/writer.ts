@@ -1,8 +1,8 @@
 import { mkdir, rm, rename, unlink } from "node:fs/promises";
-import { join, dirname } from "node:path";
+import { join } from "node:path";
 
 import { slugify } from "./slugify";
-import type { RequestDetails, RequestFile } from "./types";
+import type { Preset, RequestDetails, RequestFile } from "../types";
 
 function logError(op: string, err: unknown): void {
 	console.error(`[core:writer] ${op} failed:`, err);
@@ -11,7 +11,7 @@ function logError(op: string, err: unknown): void {
 function buildRequestFile(
 	name: string,
 	details: RequestDetails,
-	presets?: Record<string, import("./types").Preset>,
+	presets?: Record<string, Preset>,
 ): RequestFile {
 	return {
 		name,
@@ -44,7 +44,7 @@ export async function saveRequest(
 	name: string,
 	details: RequestDetails,
 	oldSlug?: string,
-	presets?: Record<string, import("./types").Preset>,
+	presets?: Record<string, Preset>,
 ): Promise<string> {
 	const slug = slugify(name) || "untitled";
 	const dirPath = join(dataDir, collectionPath);
@@ -106,10 +106,7 @@ export async function moveRequestFile(
 /**
  * Create a collection directory.
  */
-export async function createCollectionDir(
-	dataDir: string,
-	collectionPath: string,
-): Promise<void> {
+export async function createCollectionDir(dataDir: string, collectionPath: string): Promise<void> {
 	try {
 		await mkdir(join(dataDir, collectionPath), { recursive: true });
 	} catch (err) {
@@ -120,10 +117,7 @@ export async function createCollectionDir(
 /**
  * Delete a collection directory and everything inside it.
  */
-export async function deleteCollectionDir(
-	dataDir: string,
-	collectionPath: string,
-): Promise<void> {
+export async function deleteCollectionDir(dataDir: string, collectionPath: string): Promise<void> {
 	try {
 		await rm(join(dataDir, collectionPath), { recursive: true, force: true });
 	} catch (err) {

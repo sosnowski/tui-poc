@@ -38,6 +38,7 @@ export function HeadersTab() {
 				showAddRow
 				addLabel="+ key"
 				addRowCursor={addRowCursor()}
+				showDeleteColumn
 				cursorCol={headersCursor().col}
 				editing={editing()?.tab === "Headers" ? editing()! : undefined}
 				onEditInput={updateEditingDraft}

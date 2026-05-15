@@ -1,7 +1,6 @@
 import { createMemo, createSignal } from "solid-js";
 
-import { slugify } from "@tuipostman/core";
-import { SAMPLE_RESPONSE } from "../data";
+import { executeRequest, slugify } from "@tuipostman/core";
 import type {
 	Collection,
 	HttpMethod,
@@ -12,6 +11,7 @@ import type {
 	SampleResponse,
 } from "../data/types";
 import { pushToast } from "./app";
+import { activeEnv } from "./environments";
 import {
 	findCollectionPath,
 	resolveCollectionDirPath,
@@ -313,7 +313,13 @@ export function setActiveRequestName(name: string): void {
 		const presets = presetsMap()[id];
 		const oldSlug = slugFromId(id);
 		const newSlug = slugify(name) || "untitled";
-		persistSaveRequest(colPath, name, details, oldSlug !== newSlug ? oldSlug : undefined, presets);
+		persistSaveRequest(
+			colPath,
+			name,
+			details,
+			oldSlug !== newSlug ? oldSlug : undefined,
+			presets,
+		);
 
 		if (oldSlug !== newSlug) {
 			const newId = `${colPath}/${newSlug}`;
@@ -422,6 +428,48 @@ export function togglePathParam(idx: number): void {
 	scheduleDebouncedSave();
 }
 
+export function addQueryParam(index?: number): void {
+	updateActive((r) => ({
+		...r,
+		params: insertKVRow(r.params, index),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function addHeader(index?: number): void {
+	updateActive((r) => ({
+		...r,
+		headers: insertKVRow(r.headers, index),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function deleteQueryParam(idx: number): void {
+	updateActive((r) => ({
+		...r,
+		params: r.params.filter((_, i) => i !== idx),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function deleteHeader(idx: number): void {
+	updateActive((r) => ({
+		...r,
+		headers: r.headers.filter((_, i) => i !== idx),
+	}));
+	scheduleDebouncedSave();
+}
+
+function insertKVRow(rows: KV[], index = rows.length): KV[] {
+	const next = [...rows];
+	next.splice(clampIndex(index, rows.length), 0, { key: "", value: "", enabled: true });
+	return next;
+}
+
+function clampIndex(index: number, max: number): number {
+	return Math.max(0, Math.min(index, max));
+}
+
 export function setHeaderCell(idx: number, col: 0 | 1, value: string): void {
 	updateActive((r) => ({
 		...r,
@@ -467,9 +515,7 @@ export function setPathParamCell(idx: number, col: 0 | 1 | 2, value: string): vo
 			for (const [name, preset] of Object.entries(requestPresets)) {
 				next[name] = {
 					...preset,
-					pathParams: preset.pathParams.map((p, i) =>
-						i === idx ? { ...p, key } : p,
-					),
+					pathParams: preset.pathParams.map((p, i) => (i === idx ? { ...p, key } : p)),
 				};
 			}
 			return { ...prev, [id]: next };
@@ -702,11 +748,25 @@ const [response, setResponseSig] = createSignal<SampleResponse | null>(null);
 export { response };
 
 export function fireRequest(): void {
+	if (sending()) return;
+
+	void sendActiveRequest();
+}
+
+async function sendActiveRequest(): Promise<void> {
 	setSendingSig(true);
 	setResponseSig(null);
-	setTimeout(() => {
+
+	try {
+		const result = await executeRequest(activeRequest(), { environment: activeEnv() });
+		setResponseSig(result);
+		if (result.status === 0) {
+			pushToast(`request failed · ${result.timeMs}ms`, "err");
+		} else {
+			const kind = result.status >= 400 ? "err" : "ok";
+			pushToast(`${result.status} ${result.statusText} · ${result.timeMs}ms`, kind);
+		}
+	} finally {
 		setSendingSig(false);
-		setResponseSig(SAMPLE_RESPONSE);
-		pushToast("200 OK · 184ms", "ok");
-	}, 1400);
+	}
 }

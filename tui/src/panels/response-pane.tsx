@@ -89,7 +89,7 @@ export function ResponsePane() {
 					{/* Tab content */}
 					<box flexGrow={1} flexDirection="column">
 						<Show when={responseTab() === "Body"}>
-							<text>{renderJson(resp()!.body)}</text>
+							<ResponseBody body={resp()!.body} />
 						</Show>
 						<Show when={responseTab() === "Headers"}>
 							<KVTable rows={resp()!.headers} noCheck noDesc noCursor keyWidth={28} />
@@ -108,16 +108,30 @@ export function ResponsePane() {
 					</box>
 				</Show>
 
-			<Show when={!sending() && resp() == null && hasActiveRequest()}>
-				<text fg={t().textDim}>(press ⌘↵ to send the request)</text>
-			</Show>
+				<Show when={!sending() && resp() == null && hasActiveRequest()}>
+					<text fg={t().textDim}>(press ⌘↵ to send the request)</text>
+				</Show>
 
-			<Show when={!hasActiveRequest()}>
-				<text fg={t().textDim}>no request selected</text>
-			</Show>
+				<Show when={!hasActiveRequest()}>
+					<text fg={t().textDim}>no request selected</text>
+				</Show>
 			</box>
 		</Pane>
 	);
+}
+
+function ResponseBody(props: { body: unknown }) {
+	const t = () => theme();
+
+	if (props.body == null) {
+		return <text fg={t().textDim}>(empty response body)</text>;
+	}
+
+	if (typeof props.body === "string") {
+		return <text>{props.body}</text>;
+	}
+
+	return <text>{renderJson(props.body)}</text>;
 }
 
 function SendingState() {

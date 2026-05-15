@@ -48,9 +48,9 @@ export function ParamsTab() {
 	}
 
 	return (
-		<box flexDirection="column" flexGrow={1}>
+		<box flexDirection="column" flexGrow={1} rowGap={0}>
 			{r().pathParams.length > 0 ? (
-				<box flexDirection="column" flexShrink={0}>
+				<box flexDirection="column" flexShrink={0} rowGap={1}>
 					<TableLabel>Path Params</TableLabel>
 					<KVTable
 						rows={decoratedPathParams()}
@@ -68,6 +68,7 @@ export function ParamsTab() {
 				showAddRow
 				addLabel="+ key"
 				addRowCursor={queryAddRowCursor()}
+				showDeleteColumn
 				cursorCol={paramsCursor().col}
 				editing={editing()?.tab === "Params" ? editing()! : undefined}
 				onEditInput={updateEditingDraft}
@@ -80,7 +81,7 @@ export function ParamsTab() {
 
 	function TableLabel(props: { children: string }) {
 		return (
-			<box flexDirection="row" height={1}>
+			<box flexDirection="row" height={1} paddingLeft={2}>
 				<text fg={t().textDim} attributes={TextAttributes.BOLD | TextAttributes.DIM}>
 					{props.children}
 				</text>

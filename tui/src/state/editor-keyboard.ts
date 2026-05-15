@@ -12,10 +12,14 @@ import {
 	activeRequestId,
 	activeRequestName,
 	activeRequestPresetNames,
+	addHeader,
+	addQueryParam,
 	authCursor,
 	bodyTypeCursor,
 	cancelEditing,
 	cycleActivePreset,
+	deleteHeader,
+	deleteQueryParam,
 	editing,
 	editorTab,
 	focusedPane,
@@ -103,6 +107,11 @@ export function useEditorKeyboard(): void {
 		if (isPlainKey(e, "r")) {
 			startEditingRequestName();
 			e.preventDefault();
+			return;
+		}
+
+		if (e.ctrl && e.name === "d") {
+			if (deleteHighlightedRow()) e.preventDefault();
 			return;
 		}
 
@@ -221,6 +230,20 @@ function startEditingHighlightedCell(): boolean {
 
 	if (tab === "Headers") {
 		const c = headersCursor();
+		if (c.row === r.headers.length) {
+			const newRow = r.headers.length;
+			addHeader(newRow);
+			setHeadersCursor({ row: newRow, col: 0 });
+			setEditing({
+				tab: "Headers",
+				row: newRow,
+				col: 0,
+				draft: "",
+				cursor: 0,
+			});
+			return true;
+		}
+
 		const h = r.headers[c.row];
 		if (!h) return false;
 		const current = c.col === 0 ? h.key : h.value;
@@ -238,6 +261,19 @@ function startEditingHighlightedCell(): boolean {
 
 	const c = paramsCursor();
 	if (c.table === "query") {
+		if (c.row === r.params.length) {
+			addQueryParam(c.row);
+			setParamsCursor({ table: "query", row: c.row, col: 0 });
+			setEditing({
+				tab: "Params",
+				row: c.row,
+				col: 0,
+				draft: "",
+				cursor: 0,
+			});
+			return true;
+		}
+
 		const p = r.params[c.row];
 		if (!p) return false;
 		const current = c.col === 0 ? p.key : c.col === 1 ? p.value : (p.desc ?? "");
@@ -304,6 +340,34 @@ function toggleHighlightedRow(): boolean {
 
 	if (!r.pathParams[c.row]) return false;
 	togglePathParam(c.row);
+	return true;
+}
+
+function deleteHighlightedRow(): boolean {
+	const tab = editorTab();
+	const r = activeRequest();
+
+	if (tab === "Headers") {
+		const row = headersCursor().row;
+		if (!r.headers[row]) return false;
+		deleteHeader(row);
+		setHeadersCursor({
+			...headersCursor(),
+			row: clamp(row, 0, r.headers.length - 1),
+		});
+		return true;
+	}
+
+	if (tab !== "Params") return false;
+
+	const c = paramsCursor();
+	if (c.table !== "query" || !r.params[c.row]) return false;
+
+	deleteQueryParam(c.row);
+	setParamsCursor({
+		...c,
+		row: clamp(c.row, 0, r.params.length - 1),
+	});
 	return true;
 }
 

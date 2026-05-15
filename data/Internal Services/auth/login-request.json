@@ -6,7 +6,13 @@
     ":default": {
       "pathParams": [],
       "params": [],
-      "headers": [],
+      "headers": [
+        {
+          "key": "3234",
+          "value": "",
+          "enabled": true
+        }
+      ],
       "body": null,
       "bodyType": "none"
     }

@@ -37,9 +37,11 @@ export const EDITOR_KV_HINTS: KeyHint[] = [
 	{ k: "↑↓", label: "row" },
 	{ k: "←→", label: "col" },
 	{ k: "↵", label: "edit/save" },
+	{ k: "ctrl+d", label: "delete row" },
 	{ k: "esc", label: "cancel" },
 	{ k: "r", label: "rename" },
 	{ k: "m", label: "method" },
+	{ k: "u", label: "url" },
 	{ k: "ctrl+p", label: "new preset" },
 	{ k: "ctrl+↵", label: "send" },
 ];

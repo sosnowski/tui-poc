@@ -37,7 +37,7 @@ export function Tabs<T extends string>(props: Props<T>) {
 							backgroundColor={isActive() ? t().accentBg : undefined}
 						>
 							<text>
-								<S fg={isActive() ? t().textDim : t().textDim}>{i() + 1} </S>
+								<S fg={isActive() ? t().accent : t().textDim}>{i() + 1} </S>
 								<S fg={isActive() ? t().accent : t().text2} bold={isActive()}>
 									{tab.label}
 								</S>
@@ -45,10 +45,10 @@ export function Tabs<T extends string>(props: Props<T>) {
 									<S
 										fg={
 											isActive()
-												? t().accentBg
+												? t().textDim
 												: (tab.badgeColor ?? t().textDim)
 										}
-										bg={isActive() ? t().accent : undefined}
+										// bg={isActive() ? t().accent : undefined}
 										bold={isActive()}
 									>
 										{" " + String(tab.badge) + " "}

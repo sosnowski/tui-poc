@@ -9,7 +9,7 @@ import type {
 	Request,
 	RequestDetails,
 	RequestFile,
-} from "./types";
+} from "../types";
 
 export interface LoadResult {
 	collections: Collection[];
@@ -43,7 +43,9 @@ async function walkDir(
 		return [];
 	}
 
-	const dirs = entries.filter((e) => e.isDirectory()).sort((a, b) => a.name.localeCompare(b.name));
+	const dirs = entries
+		.filter((e) => e.isDirectory())
+		.sort((a, b) => a.name.localeCompare(b.name));
 
 	const collections: Collection[] = [];
 
@@ -97,10 +99,7 @@ async function loadRequestsInDir(baseDir: string, dirPath: string): Promise<Load
 	return results;
 }
 
-async function loadRequestFile(
-	baseDir: string,
-	filePath: string,
-): Promise<LoadedRequest | null> {
+async function loadRequestFile(baseDir: string, filePath: string): Promise<LoadedRequest | null> {
 	try {
 		const raw = await Bun.file(filePath).text();
 		const data: RequestFile = JSON.parse(raw);

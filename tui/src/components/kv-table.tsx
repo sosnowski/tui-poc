@@ -1,6 +1,6 @@
 // Generic key/value table used by params, headers, response headers, and env editors.
 
-import { For } from "solid-js";
+import { For, createMemo } from "solid-js";
 import type { JSX } from "@opentui/solid";
 import { TextAttributes } from "@opentui/core";
 
@@ -30,6 +30,7 @@ interface Props {
 	showAddRow?: boolean;
 	addLabel?: string;
 	addRowCursor?: boolean;
+	showDeleteColumn?: boolean;
 	cursorCol?: 0 | 1 | 2;
 	editing?: { row: number; col: 0 | 1 | 2; draft: string; cursor: number };
 	onEditInput?: (value: string) => void;
@@ -38,10 +39,21 @@ interface Props {
 
 const DEFAULT_KEY_WIDTH = 18;
 
+type RenderRow = { kind: "row"; row: KVRow; rowIndex: number } | { kind: "add" };
+
 export function KVTable(props: Props) {
 	const keyWidth = () => props.keyWidth ?? DEFAULT_KEY_WIDTH;
 	const headers = () => props.headers ?? { key: "KEY", value: "VALUE", desc: "DESCRIPTION" };
 	const showCursorCol = () => !props.noCursor;
+	const renderRows = createMemo<RenderRow[]>(() => {
+		const rows: RenderRow[] = props.rows.map((row, rowIndex) => ({
+			kind: "row",
+			row,
+			rowIndex,
+		}));
+		if (props.showAddRow) rows.push({ kind: "add" });
+		return rows;
+	});
 
 	return (
 		<box flexDirection="column" flexShrink={0}>
@@ -52,36 +64,39 @@ export function KVTable(props: Props) {
 					showCursorCol={showCursorCol()}
 					noCheck={props.noCheck}
 					noDesc={props.noDesc}
+					showDeleteColumn={props.showDeleteColumn}
 				/>
 			)}
 
-			<For each={props.rows}>
-				{(row, i) => (
-					<KVTableRow
-						row={row}
-						rowIndex={i()}
-						keyWidth={keyWidth()}
-						showCursorCol={showCursorCol()}
-						noCheck={props.noCheck}
-						noDesc={props.noDesc}
-						cursorCol={props.cursorCol}
-						editing={props.editing}
-						onEditInput={props.onEditInput}
-						onEditSubmit={props.onEditSubmit}
-					/>
-				)}
+			<For each={renderRows()}>
+				{(row) =>
+					row.kind === "row" ? (
+						<KVTableRow
+							row={row.row}
+							rowIndex={row.rowIndex}
+							keyWidth={keyWidth()}
+							showCursorCol={showCursorCol()}
+							noCheck={props.noCheck}
+							noDesc={props.noDesc}
+							showDeleteColumn={props.showDeleteColumn}
+							cursorCol={props.cursorCol}
+							editing={props.editing}
+							onEditInput={props.onEditInput}
+							onEditSubmit={props.onEditSubmit}
+						/>
+					) : (
+						<KVTableAddRow
+							label={props.addLabel ?? "+ key"}
+							keyWidth={keyWidth()}
+							showCursorCol={showCursorCol()}
+							noCheck={true}
+							noDesc={true}
+							showDeleteColumn={false}
+							cursor={props.addRowCursor}
+						/>
+					)
+				}
 			</For>
-
-			{props.showAddRow ? (
-				<KVTableAddRow
-					label={props.addLabel ?? "+ key"}
-					keyWidth={keyWidth()}
-					showCursorCol={showCursorCol()}
-					noCheck={props.noCheck}
-					noDesc={props.noDesc}
-					cursor={props.addRowCursor}
-				/>
-			) : null}
 		</box>
 	);
 }
@@ -92,6 +107,7 @@ function KVTableHeader(props: {
 	showCursorCol: boolean;
 	noCheck?: boolean;
 	noDesc?: boolean;
+	showDeleteColumn?: boolean;
 }) {
 	const t = () => theme();
 
@@ -110,6 +126,7 @@ function KVTableHeader(props: {
 			{props.noDesc ? null : (
 				<FlexTextHeader>{props.headers.desc ?? "DESCRIPTION"}</FlexTextHeader>
 			)}
+			{props.showDeleteColumn ? <text width={7}> </text> : null}
 		</box>
 	);
 }
@@ -135,6 +152,7 @@ function KVTableRow(props: {
 	showCursorCol: boolean;
 	noCheck?: boolean;
 	noDesc?: boolean;
+	showDeleteColumn?: boolean;
 	cursorCol?: 0 | 1 | 2;
 	editing?: { row: number; col: 0 | 1 | 2; draft: string; cursor: number };
 	onEditInput?: (value: string) => void;
@@ -241,6 +259,13 @@ function KVTableRow(props: {
 					)}
 				</KVCell>
 			)}
+			{props.showDeleteColumn ? (
+				<box width={7} backgroundColor={rowTint()}>
+					<text fg={props.row.cursor ? t().err : t().textDim}>
+						{props.row.muted ? "     " : "[del]"}
+					</text>
+				</box>
+			) : null}
 		</box>
 	);
 }
@@ -279,6 +304,7 @@ function KVTableAddRow(props: {
 	showCursorCol: boolean;
 	noCheck?: boolean;
 	noDesc?: boolean;
+	showDeleteColumn?: boolean;
 	cursor?: boolean;
 }) {
 	const t = () => theme();
@@ -305,6 +331,7 @@ function KVTableAddRow(props: {
 			</text>
 			<box flexGrow={1} flexBasis={0} />
 			{props.noDesc ? null : <box flexGrow={1} flexBasis={0} />}
+			{props.showDeleteColumn ? <text width={7}> </text> : null}
 		</box>
 	);
 }

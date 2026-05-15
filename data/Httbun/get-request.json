@@ -1,12 +1,34 @@
 {
   "name": "Get Request",
   "method": "GET",
-  "url": "httpbun.com/get",
+  "url": "https://httpbun.com/get",
   "presets": {
     ":default": {
       "pathParams": [],
-      "params": [],
-      "headers": [],
+      "params": [
+        {
+          "key": "param1",
+          "value": "value1",
+          "enabled": true
+        },
+        {
+          "key": "paramb",
+          "value": "valueb",
+          "enabled": true
+        }
+      ],
+      "headers": [
+        {
+          "key": "x-custom-header",
+          "value": "value of a custom header",
+          "enabled": true
+        },
+        {
+          "key": "accept",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
       "body": null,
       "bodyType": "none"
     }
