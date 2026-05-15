@@ -46,7 +46,7 @@ export function cyclePane(direction: 1 | -1 = 1): void {
 	setFocusedPaneSig(PANE_CYCLE[(i + direction + n) % n]!);
 }
 
-export type Modal = "splash" | "command" | "env" | "history" | "method" | "newMethod" | "newCollection" | "moveRequest" | "deleteConfirm" | null;
+export type Modal = "splash" | "command" | "env" | "history" | "method" | "newMethod" | "newCollection" | "moveRequest" | "deleteConfirm" | "newPreset" | null;
 
 const [modal, setModalSig] = createSignal<Modal>("splash");
 export { modal };

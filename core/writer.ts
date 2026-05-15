@@ -8,12 +8,16 @@ function logError(op: string, err: unknown): void {
 	console.error(`[core:writer] ${op} failed:`, err);
 }
 
-function buildRequestFile(name: string, details: RequestDetails): RequestFile {
+function buildRequestFile(
+	name: string,
+	details: RequestDetails,
+	presets?: Record<string, import("./types").Preset>,
+): RequestFile {
 	return {
 		name,
 		method: details.method,
 		url: details.url,
-		presets: {
+		presets: presets ?? {
 			":default": {
 				pathParams: details.pathParams,
 				params: details.params,
@@ -30,6 +34,9 @@ function buildRequestFile(name: string, details: RequestDetails): RequestFile {
  * from `dataDir` (e.g. "JSONPlaceholder/users"). `oldSlug` can be provided
  * when the request was previously saved under a different slug (name changed);
  * the old file will be removed.
+ *
+ * When `presets` is provided it is written into the file verbatim; otherwise a
+ * single `:default` preset is derived from `details` for backward compatibility.
  */
 export async function saveRequest(
 	dataDir: string,
@@ -37,11 +44,12 @@ export async function saveRequest(
 	name: string,
 	details: RequestDetails,
 	oldSlug?: string,
+	presets?: Record<string, import("./types").Preset>,
 ): Promise<string> {
 	const slug = slugify(name) || "untitled";
 	const dirPath = join(dataDir, collectionPath);
 	const filePath = join(dirPath, `${slug}.json`);
-	const content = JSON.stringify(buildRequestFile(name, details), null, 2) + "\n";
+	const content = JSON.stringify(buildRequestFile(name, details, presets), null, 2) + "\n";
 
 	try {
 		await mkdir(dirPath, { recursive: true });

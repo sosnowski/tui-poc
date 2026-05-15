@@ -7,7 +7,7 @@
     "core"
   ],
   "scripts": {
-    "dev": "bun --filter '@tuipostman/tui' dev",
+    "dev": "bun run --cwd tui --silent dev",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

@@ -16,6 +16,7 @@ import {
 	editorTab,
 	focusedPane,
 	hasActiveRequest,
+	presetsExpanded,
 	setEditorTab,
 	setFocusedPane,
 	theme,
@@ -28,7 +29,10 @@ import { AuthTab } from "./request-editor/auth-tab";
 import { BodyTab } from "./request-editor/body-tab";
 import { HeadersTab } from "./request-editor/headers-tab";
 import { ParamsTab } from "./request-editor/params-tab";
+import { PresetsChip, PresetsSidebar } from "./request-editor/presets-panel";
 import { TestsTab } from "./request-editor/tests-tab";
+import { KeyPill } from "../components/key-pill";
+import { S } from "../components/styled-span";
 
 export function RequestEditor() {
 	const t = () => theme();
@@ -60,46 +64,83 @@ export function RequestEditor() {
 				rowGap={1}
 				onMouseDown={() => setFocusedPane("editor")}
 			>
-				<Show when={hasActiveRequest()} fallback={
-					<box flexGrow={1} alignItems="center" justifyContent="center">
-						<text fg={t().textDim}>no request selected — press n to create one</text>
-					</box>
-				}>
-					<box flexDirection="row" columnGap={1} alignItems="center" justifyContent="center">
+				<Show
+					when={hasActiveRequest()}
+					fallback={
+						<box flexGrow={1} alignItems="center" justifyContent="center">
+							<text fg={t().textDim}>
+								no request selected — press n to create one
+							</text>
+						</box>
+					}
+				>
+					<box
+						flexDirection="row"
+						columnGap={1}
+						alignItems="center"
+						justifyContent="center"
+					>
 						<RequestNameRow />
 						<RequestTargetRow />
 					</box>
 
-					<box flexShrink={0} height={1}>
-						<text fg={t().textDim} attributes={TextAttributes.DIM}>
-							preset: :default
-						</text>
-					</box>
+					<Show
+						when={presetsExpanded()}
+						fallback={
+							<>
+								<box flexDirection="row" flexShrink={0} height={1} columnGap={2}>
+									<PresetsChip />
+									<Tabs
+										tabs={tabs()}
+										active={editorTab()}
+										onSelect={setEditorTab}
+									/>
+								</box>
 
-					<box flexShrink={0} height={1}>
-						<Tabs tabs={tabs()} active={editorTab()} onSelect={setEditorTab} />
-					</box>
+								<EditorTabContent />
+							</>
+						}
+					>
+						<box flexDirection="row" columnGap={1} flexGrow={1} flexBasis={0}>
+							<PresetsSidebar />
+							<box flexDirection="column" flexGrow={1} flexBasis={0} rowGap={1}>
+								<box flexDirection="row" flexShrink={0} height={1} columnGap={2}>
+									<Tabs
+										tabs={tabs()}
+										active={editorTab()}
+										onSelect={setEditorTab}
+									/>
+								</box>
 
-					<box flexGrow={1} flexDirection="column">
-						<Show when={editorTab() === "Params"}>
-							<ParamsTab />
-						</Show>
-						<Show when={editorTab() === "Headers"}>
-							<HeadersTab />
-						</Show>
-						<Show when={editorTab() === "Body"}>
-							<BodyTab />
-						</Show>
-						<Show when={editorTab() === "Auth"}>
-							<AuthTab />
-						</Show>
-						<Show when={editorTab() === "Tests"}>
-							<TestsTab />
-						</Show>
-					</box>
+								<EditorTabContent />
+							</box>
+						</box>
+					</Show>
 				</Show>
 			</box>
 		</Pane>
+	);
+}
+
+function EditorTabContent() {
+	return (
+		<box flexGrow={1} flexDirection="column">
+			<Show when={editorTab() === "Params"}>
+				<ParamsTab />
+			</Show>
+			<Show when={editorTab() === "Headers"}>
+				<HeadersTab />
+			</Show>
+			<Show when={editorTab() === "Body"}>
+				<BodyTab />
+			</Show>
+			<Show when={editorTab() === "Auth"}>
+				<AuthTab />
+			</Show>
+			<Show when={editorTab() === "Tests"}>
+				<TestsTab />
+			</Show>
+		</box>
 	);
 }
 
@@ -192,7 +233,7 @@ function RequestTargetRow() {
 				borderColor={t().borderFocus}
 			>
 				<text fg={t().accent} attributes={TextAttributes.BOLD}>
-					Send ⌘↵
+					Send
 				</text>
 			</box>
 

@@ -1,0 +1,14 @@
+{
+  "name": "Get Request",
+  "method": "GET",
+  "url": "httpbun.com/get",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "none"
+    }
+  }
+}

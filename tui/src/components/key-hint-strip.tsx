@@ -9,7 +9,7 @@ export function KeyHintStrip(props: { items: KeyHint[] }) {
 
 	return (
 		<box flexDirection="row" flexShrink={0} height={1}>
-			<text fg={t().textDim}>{"  ── "}</text>
+			<text fg={t().textDim}>{"─ "}</text>
 			<text>
 				<For each={props.items}>
 					{(it, i) => (
@@ -25,7 +25,7 @@ export function KeyHintStrip(props: { items: KeyHint[] }) {
 					)}
 				</For>
 			</text>
-			<text fg={t().textDim}>{" ──"}</text>
+			<text fg={t().textDim}>{" ─"}</text>
 		</box>
 	);
 }

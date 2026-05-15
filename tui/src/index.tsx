@@ -23,8 +23,8 @@ render(() => <App />, {
 
 // Load collections from disk (or seed on first run), then flip loading off.
 loadOrSeed()
-	.then(({ collections, requestDetails }) => {
-		initCollections(collections, requestDetails);
+	.then(({ collections, requestDetails, presets }) => {
+		initCollections(collections, requestDetails, presets);
 		setLoading(false);
 	})
 	.catch((err) => {

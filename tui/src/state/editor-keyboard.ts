@@ -6,25 +6,36 @@
 import { useKeyboard } from "@opentui/solid";
 import type { KeyEvent } from "@opentui/core";
 
-import { clamp, isEnterKey, isPlainKey } from "../keyboard/helpers";
+import { clamp, isEnterKey, isPlainKey, printableChar } from "../keyboard/helpers";
 import {
 	activeRequest,
+	activeRequestId,
 	activeRequestName,
+	activeRequestPresetNames,
 	authCursor,
 	bodyTypeCursor,
 	cancelEditing,
+	cycleActivePreset,
 	editing,
 	editorTab,
 	focusedPane,
+	getActivePresetName,
+	hasActiveRequest,
 	headersCursor,
 	modal,
+	openModal,
 	paramsCursor,
+	presetsCursor,
+	presetsExpanded,
+	setActivePresetForRequest,
 	setAuthCursor,
 	setBodyTypeCursor,
 	setEditing,
 	setEditorTab,
 	setHeadersCursor,
 	setParamsCursor,
+	setPresetsCursor,
+	setPresetsExpanded,
 	toggleHeader,
 	toggleParam,
 	togglePathParam,
@@ -52,6 +63,40 @@ export function useEditorKeyboard(): void {
 
 		if (editing() !== null) {
 			handleEditMode(e);
+			return;
+		}
+
+		if (e.name === "escape" && presetsExpanded()) {
+			setPresetsExpanded(false);
+			e.preventDefault();
+			return;
+		}
+
+		const plainKey = !e.ctrl && !e.meta ? printableChar(e) : undefined;
+
+		if (plainKey === "p" || plainKey === "P") {
+			if (!hasActiveRequest()) return;
+			if (!presetsExpanded()) {
+				const names = activeRequestPresetNames();
+				const activeName = getActivePresetName(activeRequestId());
+				const idx = names.indexOf(activeName);
+				setPresetsExpanded(true);
+				setPresetsCursor(Math.max(0, idx));
+			} else {
+				const names = activeRequestPresetNames();
+				const direction = plainKey === "P" ? -1 : 1;
+				const nextCursor = (presetsCursor() + direction + names.length) % names.length;
+				setPresetsCursor(nextCursor);
+				setActivePresetForRequest(activeRequestId(), names[nextCursor]!);
+			}
+			e.preventDefault();
+			return;
+		}
+
+		if (e.ctrl && e.name === "p") {
+			if (!hasActiveRequest()) return;
+			openModal("newPreset");
+			e.preventDefault();
 			return;
 		}
 
@@ -131,6 +176,11 @@ export function useEditorKeyboard(): void {
 		if (isEnterKey(e)) {
 			// Ctrl/Meta+Enter is "fire request" handled by the global handler.
 			if (e.ctrl || e.meta) return;
+			if (presetsExpanded()) {
+				setPresetsExpanded(false);
+				e.preventDefault();
+				return;
+			}
 			if (startEditingHighlightedCell()) e.preventDefault();
 			return;
 		}

@@ -24,24 +24,38 @@ interface Props<T extends string> {
 export function Tabs<T extends string>(props: Props<T>) {
 	const t = () => theme();
 	return (
-		<box flexDirection="row" paddingTop={0} paddingBottom={0} columnGap={2}>
+		<box flexDirection="row" paddingTop={0} paddingBottom={0} columnGap={1}>
 			<For each={props.tabs}>
 				{(tab, i) => {
 					const isActive = () => props.active === tab.id;
 					return (
-						<text>
-							<S fg={t().accent}>{i() + 1} </S>
-							<S
-								fg={isActive() ? t().accent : t().text2}
-								bold={isActive()}
-								underline={isActive()}
-							>
-								{tab.label}
-							</S>
-							{tab.badge != null ? (
-								<S fg={tab.badgeColor ?? t().textDim}>{" " + String(tab.badge)}</S>
-							) : null}
-						</text>
+						<box
+							flexDirection="row"
+							height={1}
+							paddingLeft={1}
+							paddingRight={1}
+							backgroundColor={isActive() ? t().accentBg : undefined}
+						>
+							<text>
+								<S fg={isActive() ? t().textDim : t().textDim}>{i() + 1} </S>
+								<S fg={isActive() ? t().accent : t().text2} bold={isActive()}>
+									{tab.label}
+								</S>
+								{tab.badge != null ? (
+									<S
+										fg={
+											isActive()
+												? t().accentBg
+												: (tab.badgeColor ?? t().textDim)
+										}
+										bg={isActive() ? t().accent : undefined}
+										bold={isActive()}
+									>
+										{" " + String(tab.badge) + " "}
+									</S>
+								) : null}
+							</text>
+						</box>
 					);
 				}}
 			</For>

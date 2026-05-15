@@ -5,6 +5,7 @@ import type {
 	Collection,
 	HttpMethod,
 	KV,
+	Preset,
 	Request,
 	RequestDetails,
 	RequestFile,
@@ -13,24 +14,27 @@ import type {
 export interface LoadResult {
 	collections: Collection[];
 	requestDetails: Record<string, RequestDetails>;
+	presets: Record<string, Record<string, Preset>>;
 }
 
 export async function readCollections(dataDir: string): Promise<LoadResult> {
 	try {
 		await readdir(dataDir);
 	} catch {
-		return { collections: [], requestDetails: {} };
+		return { collections: [], requestDetails: {}, presets: {} };
 	}
 
 	const requestDetails: Record<string, RequestDetails> = {};
-	const collections = await walkDir(dataDir, dataDir, requestDetails);
-	return { collections, requestDetails };
+	const presets: Record<string, Record<string, Preset>> = {};
+	const collections = await walkDir(dataDir, dataDir, requestDetails, presets);
+	return { collections, requestDetails, presets };
 }
 
 async function walkDir(
 	baseDir: string,
 	currentDir: string,
 	requestDetails: Record<string, RequestDetails>,
+	presets: Record<string, Record<string, Preset>>,
 ): Promise<Collection[]> {
 	let entries;
 	try {
@@ -47,11 +51,12 @@ async function walkDir(
 		const dirPath = join(currentDir, dir.name);
 		const relPath = dirPath.slice(baseDir.length + 1);
 
-		const children = await walkDir(baseDir, dirPath, requestDetails);
+		const children = await walkDir(baseDir, dirPath, requestDetails, presets);
 		const requests = await loadRequestsInDir(baseDir, dirPath);
 
-		for (const { request, details } of requests) {
+		for (const { request, details, filePresets } of requests) {
 			requestDetails[request.id] = details;
+			if (filePresets) presets[request.id] = filePresets;
 		}
 
 		collections.push({
@@ -69,6 +74,7 @@ async function walkDir(
 interface LoadedRequest {
 	request: Request;
 	details: RequestDetails;
+	filePresets: Record<string, Preset> | null;
 }
 
 async function loadRequestsInDir(baseDir: string, dirPath: string): Promise<LoadedRequest[]> {
@@ -123,7 +129,9 @@ async function loadRequestFile(
 			bodyType: defaultPreset?.bodyType ?? "none",
 		};
 
-		return { request, details };
+		const filePresets = data.presets ?? null;
+
+		return { request, details, filePresets };
 	} catch (err) {
 		console.error(`[core] failed to load ${filePath}:`, err);
 		return null;

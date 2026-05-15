@@ -40,6 +40,7 @@ export { collections };
 export function initCollections(
 	loadedCollections: Collection[],
 	loadedDetails: Record<string, RequestDetails>,
+	loadedPresets?: Record<string, Record<string, Preset>>,
 ): void {
 	setCollectionsSig(loadedCollections);
 	setPresetsMap(
@@ -49,9 +50,11 @@ export function initCollections(
 				const syncedPathParams = req
 					? syncPathParams(req.url, details.pathParams)
 					: details.pathParams;
+				const filePresets = loadedPresets?.[id];
 				return [
 					id,
 					{
+						...filePresets,
 						":default": {
 							...detailsToPreset(details),
 							pathParams: syncedPathParams,
@@ -117,6 +120,65 @@ export function togglePin(id: string): void {
 
 const [presetsMap, setPresetsMap] = createSignal<Record<string, Record<string, Preset>>>({});
 
+const [activePresetMap, setActivePresetMapSig] = createSignal<Record<string, string>>({});
+export { activePresetMap };
+
+export function getActivePresetName(requestId: string): string {
+	return activePresetMap()[requestId] ?? ":default";
+}
+
+export function setActivePresetForRequest(requestId: string, presetName: string): void {
+	setActivePresetMapSig((prev) => ({ ...prev, [requestId]: presetName }));
+}
+
+export function activeRequestPresetNames(): string[] {
+	const id = activeRequestId();
+	const presets = presetsMap()[id];
+	return presets ? Object.keys(presets) : [];
+}
+
+export function cycleActivePreset(): void {
+	const id = activeRequestId();
+	const names = activeRequestPresetNames();
+	if (names.length === 0) return;
+
+	const current = getActivePresetName(id);
+	const idx = names.indexOf(current);
+	const nextIdx = (idx + 1) % names.length;
+	const next = names[nextIdx]!;
+	setActivePresetForRequest(id, next);
+}
+
+export function createNewPreset(name: string): void {
+	const trimmed = name.trim();
+	if (!trimmed) {
+		pushToast("preset name cannot be empty", "err");
+		return;
+	}
+
+	const id = activeRequestId();
+	const presets = presetsMap()[id];
+	if (!presets) return;
+
+	if (presets[trimmed]) {
+		pushToast("preset already exists", "err");
+		return;
+	}
+
+	const activeName = getActivePresetName(id);
+	const source = presets[activeName] ?? EMPTY_PRESET;
+	const cloned: Preset = JSON.parse(JSON.stringify(source));
+
+	setPresetsMap((prev) => ({
+		...prev,
+		[id]: { ...prev[id], [trimmed]: cloned },
+	}));
+
+	setActivePresetForRequest(id, trimmed);
+	scheduleDebouncedSave();
+	pushToast(`preset "${trimmed}" created`, "ok");
+}
+
 const EMPTY_REQUEST: RequestDetails = {
 	method: "GET",
 	url: "",
@@ -150,8 +212,9 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 	if (!collReq) return EMPTY_REQUEST;
 
 	const presets = presetsMap()[id];
-	const defaultPreset = presets?.[":default"];
-	if (!defaultPreset) {
+	const activePresetName = getActivePresetName(id);
+	const activePreset = presets?.[activePresetName] ?? presets?.[":default"];
+	if (!activePreset) {
 		return {
 			method: collReq.method,
 			url: collReq.url,
@@ -166,11 +229,11 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 	return {
 		method: collReq.method,
 		url: collReq.url,
-		pathParams: syncPathParams(collReq.url, defaultPreset.pathParams),
-		params: defaultPreset.params,
-		headers: defaultPreset.headers,
-		body: defaultPreset.body,
-		bodyType: defaultPreset.bodyType,
+		pathParams: syncPathParams(collReq.url, activePreset.pathParams),
+		params: activePreset.params,
+		headers: activePreset.headers,
+		body: activePreset.body,
+		bodyType: activePreset.bodyType,
 	};
 });
 
@@ -189,11 +252,12 @@ function updateActive(updater: (r: RequestDetails) => RequestDetails): void {
 		const id = activeRequestId();
 		const cur = activeRequest();
 		const next = updater(cur);
+		const activePresetName = getActivePresetName(id);
 		return {
 			...prev,
 			[id]: {
 				...(prev[id] ?? {}),
-				":default": {
+				[activePresetName]: {
 					pathParams: next.pathParams,
 					params: next.params,
 					headers: next.headers,
@@ -218,7 +282,8 @@ export function setActiveRequestMethod(method: HttpMethod): void {
 	const colPath = findCollectionPath(collections(), id);
 	if (req && colPath) {
 		const details = buildMergedDetails(id);
-		persistSaveRequest(colPath, req.name, details, slugFromId(id));
+		const presets = presetsMap()[id];
+		persistSaveRequest(colPath, req.name, details, slugFromId(id), presets);
 	}
 
 	pushToast(`method: ${method}`, "ok");
@@ -245,9 +310,10 @@ export function setActiveRequestName(name: string): void {
 
 	if (colPath && oldReq) {
 		const details = buildMergedDetails(id);
+		const presets = presetsMap()[id];
 		const oldSlug = slugFromId(id);
 		const newSlug = slugify(name) || "untitled";
-		persistSaveRequest(colPath, name, details, oldSlug !== newSlug ? oldSlug : undefined);
+		persistSaveRequest(colPath, name, details, oldSlug !== newSlug ? oldSlug : undefined, presets);
 
 		if (oldSlug !== newSlug) {
 			const newId = `${colPath}/${newSlug}`;
@@ -427,22 +493,24 @@ function scheduleDebouncedSave(): void {
 	const colPath = findCollectionPath(collections(), id);
 	if (!colPath || !req) return;
 	const details = buildMergedDetails(id);
-	debouncedSaveRequest(colPath, id, req.name, details);
+	const presets = presetsMap()[id];
+	debouncedSaveRequest(colPath, id, req.name, details, presets);
 }
 
 function buildMergedDetails(id: string): RequestDetails {
 	const req = findRequest(collections(), id);
 	if (!req) return EMPTY_REQUEST;
 	const presets = presetsMap()[id];
-	const defaultPreset = presets?.[":default"] ?? EMPTY_PRESET;
+	const activePresetName = getActivePresetName(id);
+	const activePreset = presets?.[activePresetName] ?? EMPTY_PRESET;
 	return {
 		method: req.method,
 		url: req.url,
-		pathParams: syncPathParams(req.url, defaultPreset.pathParams),
-		params: defaultPreset.params,
-		headers: defaultPreset.headers,
-		body: defaultPreset.body,
-		bodyType: defaultPreset.bodyType,
+		pathParams: syncPathParams(req.url, activePreset.pathParams),
+		params: activePreset.params,
+		headers: activePreset.headers,
+		body: activePreset.body,
+		bodyType: activePreset.bodyType,
 	};
 }
 
@@ -612,6 +680,7 @@ export function createNewRequest(method: HttpMethod): void {
 	};
 	setPresetsMap((prev) => ({ ...prev, [id]: { ":default": defaultPreset } }));
 
+	const presets = { ":default": defaultPreset };
 	const details: RequestDetails = {
 		method,
 		url: "",
@@ -621,7 +690,7 @@ export function createNewRequest(method: HttpMethod): void {
 		body: null,
 		bodyType: "none",
 	};
-	persistSaveRequest(colPath, name, details);
+	persistSaveRequest(colPath, name, details, undefined, presets);
 
 	setActiveRequestIdSig(id);
 }

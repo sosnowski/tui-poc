@@ -71,3 +71,17 @@ export { responseTab };
 export function setResponseTab(t: ResponseTab): void {
 	setResponseTabSig(t);
 }
+
+const [presetsExpanded, setPresetsExpandedSig] = createSignal(false);
+export { presetsExpanded };
+
+export function setPresetsExpanded(v: boolean): void {
+	setPresetsExpandedSig(v);
+}
+
+const [presetsCursor, setPresetsCursorSig] = createSignal(0);
+export { presetsCursor };
+
+export function setPresetsCursor(i: number): void {
+	setPresetsCursorSig(i);
+}

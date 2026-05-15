@@ -18,6 +18,7 @@ import { MethodModal } from "./modals/method";
 import { DeleteConfirmModal } from "./modals/delete-confirm";
 import { MoveRequestModal } from "./modals/move-request";
 import { NewCollectionModal } from "./modals/new-collection";
+import { NewPresetModal } from "./modals/new-preset";
 import { ToastView } from "./modals/toast";
 
 import { Spinner } from "./components/spinner";
@@ -86,6 +87,9 @@ export function App() {
 				</Show>
 				<Show when={modal() === "moveRequest"}>
 					<MoveRequestModal />
+				</Show>
+				<Show when={modal() === "newPreset"}>
+					<NewPresetModal />
 				</Show>
 				<Show when={modal() === "deleteConfirm"}>
 					<DeleteConfirmModal />

@@ -9,6 +9,7 @@ import {
 	type Collection,
 	type RequestDetails,
 	type LoadResult,
+	type Preset,
 } from "@tuipostman/core";
 import { COLLECTIONS, REQUEST_PRESETS } from "../data";
 
@@ -115,6 +116,7 @@ export function debouncedSaveRequest(
 	requestId: string,
 	name: string,
 	details: RequestDetails,
+	presets?: Record<string, Preset>,
 ): void {
 	const existing = pendingTimers.get(requestId);
 	if (existing) clearTimeout(existing);
@@ -123,7 +125,14 @@ export function debouncedSaveRequest(
 		pendingTimers.delete(requestId);
 		const oldSlug = slugFromId(requestId);
 		const newSlug = slugify(name) || "untitled";
-		saveRequest(dataDir, collectionPath, name, details, oldSlug !== newSlug ? oldSlug : undefined);
+		saveRequest(
+			dataDir,
+			collectionPath,
+			name,
+			details,
+			oldSlug !== newSlug ? oldSlug : undefined,
+			presets,
+		);
 	}, DEBOUNCE_MS);
 	pendingTimers.set(requestId, timer);
 }
@@ -133,8 +142,9 @@ export function persistSaveRequest(
 	name: string,
 	details: RequestDetails,
 	oldSlug?: string,
+	presets?: Record<string, Preset>,
 ): void {
-	saveRequest(dataDir, collectionPath, name, details, oldSlug);
+	saveRequest(dataDir, collectionPath, name, details, oldSlug, presets);
 }
 
 export function persistDeleteRequest(requestId: string): void {

@@ -13,6 +13,7 @@ export interface KeyHint {
 export const GLOBAL_HINTS: KeyHint[] = [
 	{ k: "/", label: "cmd" },
 	{ k: "n", label: "new" },
+	{ k: "ctrl+p", label: "preset" },
 	{ k: "e", label: "env" },
 	{ k: "h", label: "hist" },
 	{ k: "m", label: "method" },
@@ -39,6 +40,8 @@ export const EDITOR_KV_HINTS: KeyHint[] = [
 	{ k: "esc", label: "cancel" },
 	{ k: "r", label: "rename" },
 	{ k: "m", label: "method" },
+	{ k: "ctrl+p", label: "new preset" },
+	{ k: "ctrl+↵", label: "send" },
 ];
 
 export const EDITOR_BODY_HINTS: KeyHint[] = [
@@ -57,4 +60,9 @@ export const RESPONSE_HINTS: KeyHint[] = [
 	{ k: "3", label: "Cookies" },
 	{ k: "4", label: "Tests" },
 	{ k: "5", label: "Timeline" },
+];
+
+export const PRESETS_HINTS: KeyHint[] = [
+	{ k: "p/↵", label: "cycle" },
+	{ k: "esc", label: "close" },
 ];
