@@ -5,7 +5,6 @@ import { focusedPane, setFocusedPane } from "../../state/app";
 import { collections } from "../../state/store";
 
 import { DirectoryRow } from "./directory-row";
-import { Footer } from "./footer";
 import { PinnedSection } from "./pinned-section";
 import { RequestRow } from "./request-row";
 import type { Collection } from "../../data/types";
@@ -109,7 +108,6 @@ export function CollectionsPane() {
 				</For>
 
 				<box flexGrow={1} />
-				<Footer />
 			</box>
 		</Pane>
 	);

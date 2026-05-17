@@ -24,14 +24,20 @@ import { ToastView } from "./modals/toast";
 import { Spinner } from "./components/spinner";
 
 import { loading, modal, theme } from "./state/store";
-import { useGlobalKeyboard } from "./state/keyboard";
-import { useEditorKeyboard } from "./state/editor-keyboard";
-import { useResponseKeyboard } from "./state/response-keyboard";
+import { useGlobalKeybindings } from "./keyboard/use-global-keybindings";
+import { useGlobalScope } from "./keyboard/scopes/global";
+import { useEditorEditingScope } from "./keyboard/scopes/editor";
 
 export function App() {
-	useGlobalKeyboard();
-	useEditorKeyboard();
-	useResponseKeyboard();
+	// One useKeyboard listener for the whole app. Walks the scope registry on
+	// every keystroke and dispatches the highest-priority match.
+	useGlobalKeybindings();
+	// Always-on bindings (q, /, e, h, ⌘↵, …). Lowest priority — every panel
+	// scope shadows it for its own key choices.
+	useGlobalScope();
+	// Inline edit mode is a true overlay: when active it shadows everything
+	// else so plain letters get consumed by the input, not by global shortcuts.
+	useEditorEditingScope();
 
 	const t = () => theme();
 

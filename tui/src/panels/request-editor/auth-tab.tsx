@@ -1,11 +1,12 @@
-import { KeyHintStrip } from "../../components/key-hint-strip";
-import { EDITOR_AUTH_HINTS } from "../../keyboard/keybindings";
 import { S } from "../../components/styled-span";
+import { useEditorAuthScope } from "../../keyboard/scopes/editor";
 import { authCursor, theme } from "../../state/store";
 import { vars } from "../../utils/highlight";
 import { RadioStrip } from "./radio-strip";
 
 export function AuthTab() {
+	useEditorAuthScope();
+
 	const t = () => theme();
 	const auth = () => authCursor();
 
@@ -44,7 +45,6 @@ export function AuthTab() {
 			</box>
 
 			<box flexGrow={1} />
-			<KeyHintStrip items={EDITOR_AUTH_HINTS} />
 		</box>
 	);
 }

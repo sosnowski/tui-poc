@@ -1,12 +1,13 @@
 import { Show } from "solid-js";
 
-import { KeyHintStrip } from "../../components/key-hint-strip";
-import { EDITOR_BODY_HINTS } from "../../keyboard/keybindings";
+import { useEditorBodyScope } from "../../keyboard/scopes/editor";
 import { activeRequest, bodyTypeCursor, theme } from "../../state/store";
 import { renderJson } from "../../utils/json-view";
 import { RadioStrip } from "./radio-strip";
 
 export function BodyTab() {
+	useEditorBodyScope();
+
 	const t = () => theme();
 	const r = activeRequest;
 	const selectedId = () =>
@@ -40,7 +41,6 @@ export function BodyTab() {
 			</Show>
 
 			<box flexGrow={1} />
-			<KeyHintStrip items={EDITOR_BODY_HINTS} />
 		</box>
 	);
 }

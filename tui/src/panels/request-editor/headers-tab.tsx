@@ -1,9 +1,8 @@
 import { TextAttributes } from "@opentui/core";
 import { createMemo } from "solid-js";
 
-import { KeyHintStrip } from "../../components/key-hint-strip";
-import { EDITOR_KV_HINTS } from "../../keyboard/keybindings";
 import { KVTable } from "../../components/kv-table";
+import { useEditorHeadersScope } from "../../keyboard/scopes/editor";
 import {
 	activeRequest,
 	commitEditingValue,
@@ -15,6 +14,8 @@ import {
 import { vars } from "../../utils/highlight";
 
 export function HeadersTab() {
+	useEditorHeadersScope();
+
 	const t = () => theme();
 	const r = activeRequest;
 
@@ -56,7 +57,6 @@ export function HeadersTab() {
 			</box>
 
 			<box flexGrow={1} />
-			<KeyHintStrip items={EDITOR_KV_HINTS} />
 		</box>
 	);
 }

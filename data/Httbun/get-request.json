@@ -27,6 +27,11 @@
           "key": "accept",
           "value": "application/json",
           "enabled": true
+        },
+        {
+          "key": "somethin",
+          "value": "something else",
+          "enabled": true
         }
       ],
       "body": null,

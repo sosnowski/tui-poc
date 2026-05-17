@@ -1,20 +1,35 @@
-import { createMemo } from "solid-js";
+import { createEffect, createMemo } from "solid-js";
 import { TextAttributes } from "@opentui/core";
 
-import { KeyHintStrip } from "../../components/key-hint-strip";
-import { EDITOR_KV_HINTS } from "../../keyboard/keybindings";
 import { KVTable } from "../../components/kv-table";
+import { clamp } from "../../keyboard/helpers";
+import { useEditorParamsScope } from "../../keyboard/scopes/editor";
 import {
 	activeRequest,
 	commitEditingValue,
 	editing,
 	paramsCursor,
+	setParamsCursor,
 	theme,
 	updateEditingDraft,
 } from "../../state/store";
 import { vars } from "../../utils/highlight";
 
 export function ParamsTab() {
+	useEditorParamsScope();
+
+	// If the cursor is parked on the (empty) path-params table, snap it to
+	// query so arrow-keys keep working. Used to live inside the keyboard
+	// handler; lifting it to a reactive effect means it stays correct even
+	// when the tab is switched in without a key event.
+	createEffect(() => {
+		const r = activeRequest();
+		const c = paramsCursor();
+		if (c.table !== "path") return;
+		if (r.pathParams.length > 0) return;
+		setParamsCursor({ ...c, table: "query", row: clamp(c.row, 0, r.params.length) });
+	});
+
 	const t = () => theme();
 	const r = activeRequest;
 
@@ -75,7 +90,6 @@ export function ParamsTab() {
 				onEditSubmit={commitEditingValue}
 			/>
 			<box flexGrow={1} />
-			<KeyHintStrip items={EDITOR_KV_HINTS} />
 		</box>
 	);
 

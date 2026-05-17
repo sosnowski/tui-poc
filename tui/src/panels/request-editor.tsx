@@ -7,6 +7,7 @@ import { InlineInput } from "../components/inline-input";
 import { Pane } from "../components/pane";
 import { MethodChip, MethodChipInline, methodColor } from "../components/method-tag";
 import { Tabs } from "../components/tabs";
+import { useEditorScope } from "../keyboard/scopes/editor";
 import {
 	activeRequest,
 	activeRequestName,
@@ -35,6 +36,8 @@ import { KeyPill } from "../components/key-pill";
 import { S } from "../components/styled-span";
 
 export function RequestEditor() {
+	useEditorScope();
+
 	const t = () => theme();
 	const focused = () => focusedPane() === "editor";
 	const r = activeRequest;

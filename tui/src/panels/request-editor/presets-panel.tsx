@@ -2,6 +2,7 @@ import { For, createMemo } from "solid-js";
 import { TextAttributes } from "@opentui/core";
 
 import { S } from "../../components/styled-span";
+import { useEditorPresetsScope } from "../../keyboard/scopes/editor";
 import {
 	activeRequestId,
 	activeRequestPresetNames,
@@ -9,8 +10,6 @@ import {
 	presetsCursor,
 	theme,
 } from "../../state/store";
-import { KeyHintStrip } from "../../components/key-hint-strip";
-import { PRESETS_HINTS } from "../../keyboard/keybindings";
 
 const SIDEBAR_WIDTH = 30;
 
@@ -46,6 +45,8 @@ export function PresetsChip() {
 }
 
 export function PresetsSidebar() {
+	useEditorPresetsScope();
+
 	const t = () => theme();
 	const names = createMemo(() => activeRequestPresetNames());
 	const activeName = () => getActivePresetName(activeRequestId());
@@ -106,8 +107,6 @@ export function PresetsSidebar() {
 			</box>
 
 			<box flexGrow={1} />
-
-			<KeyHintStrip items={PRESETS_HINTS} />
 		</box>
 	);
 }

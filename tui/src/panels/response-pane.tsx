@@ -14,8 +14,7 @@ import { Tabs } from "../components/tabs";
 import { Spinner } from "../components/spinner";
 import { StatusChip } from "../components/status-chip";
 import { KVTable } from "../components/kv-table";
-import { KeyHintStrip } from "../components/key-hint-strip";
-import { RESPONSE_HINTS } from "../keyboard/keybindings";
+import { useResponseScope } from "../keyboard/scopes/response";
 import { renderJson } from "../utils/json-view";
 import {
 	focusedPane,
@@ -30,6 +29,8 @@ import {
 } from "../state/store";
 
 export function ResponsePane() {
+	useResponseScope();
+
 	const t = () => theme();
 	const focused = () => focusedPane() === "response";
 	const resp = response;
@@ -104,7 +105,6 @@ export function ResponsePane() {
 							<text fg={t().textDim}>DNS · TCP · TLS · request · response</text>
 						</Show>
 						<box flexGrow={1} />
-						<KeyHintStrip items={RESPONSE_HINTS} />
 					</box>
 				</Show>
 
