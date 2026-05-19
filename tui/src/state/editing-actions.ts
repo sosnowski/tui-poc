@@ -2,6 +2,7 @@ import { editing, setEditing } from "./editor";
 import {
 	setActiveRequestName,
 	setActiveRequestUrl,
+	setFormUrlEncodedCell,
 	setHeaderCell,
 	setParamCell,
 	setPathParamCell,
@@ -35,6 +36,12 @@ export function commitEditingValue(value: string): void {
 
 	if (current.tab === "Headers") {
 		setHeaderCell(current.row, current.col as 0 | 1, value);
+		setEditing(null);
+		return;
+	}
+
+	if (current.tab === "Body") {
+		setFormUrlEncodedCell(current.row, current.col as 0 | 1, value);
 		setEditing(null);
 		return;
 	}

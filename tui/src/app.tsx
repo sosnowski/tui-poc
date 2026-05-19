@@ -19,6 +19,7 @@ import { DeleteConfirmModal } from "./modals/delete-confirm";
 import { MoveRequestModal } from "./modals/move-request";
 import { NewCollectionModal } from "./modals/new-collection";
 import { NewPresetModal } from "./modals/new-preset";
+import { AttachBinaryFileModal } from "./modals/attach-binary-file";
 import { ToastView } from "./modals/toast";
 
 import { Spinner } from "./components/spinner";
@@ -96,6 +97,9 @@ export function App() {
 				</Show>
 				<Show when={modal() === "newPreset"}>
 					<NewPresetModal />
+				</Show>
+				<Show when={modal() === "attachBinaryFile"}>
+					<AttachBinaryFileModal />
 				</Show>
 				<Show when={modal() === "deleteConfirm"}>
 					<DeleteConfirmModal />

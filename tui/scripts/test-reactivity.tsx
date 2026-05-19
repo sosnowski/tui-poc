@@ -353,5 +353,57 @@ reportEditCheck(
 	[`value=${JSON.stringify(afterEsc)}`, `expected=${JSON.stringify(committedValue)}`],
 );
 
+// ─── Autocomplete tests ────────────────────────────────────────────────────
+
+setEditorTab("Headers");
+setHeadersCursor({ row: 3, col: 0 }); // add row
+await setup.renderOnce();
+await setup.mockInput.pressEnter();
+await setup.renderOnce();
+
+// Type fuzzy query for Content-Type
+await setup.mockInput.typeText("ct");
+await setup.renderOnce();
+
+reportEditCheck(
+	"Headers autocomplete — typing shows Content-Type suggestion",
+	editing() !== null && hasFrame("Content-Type"),
+);
+
+// Select with down+enter
+await setup.mockInput.pressArrow("down");
+await setup.renderOnce();
+await setup.mockInput.pressEnter();
+await setup.renderOnce();
+
+reportEditCheck(
+	"Headers autocomplete — down+enter selects highlighted suggestion",
+	editing() === null && activeRequest().headers.length === 4 && activeRequest().headers[3]!.key === "Content-Type",
+	[
+		`key=${JSON.stringify(activeRequest().headers[3]?.key)}`,
+		`headers.length=${activeRequest().headers.length}`,
+	],
+);
+
+// Test custom value without selection on a fresh row
+setHeadersCursor({ row: 4, col: 0 }); // add row again
+await setup.renderOnce();
+await setup.mockInput.pressEnter();
+await setup.renderOnce();
+
+await setup.mockInput.typeText("X-Custom-Thing");
+await setup.renderOnce();
+await setup.mockInput.pressEnter();
+await setup.renderOnce();
+
+reportEditCheck(
+	"Headers autocomplete — enter commits custom value without selection",
+	editing() === null && activeRequest().headers.length === 5 && activeRequest().headers[4]!.key === "X-Custom-Thing",
+	[
+		`key=${JSON.stringify(activeRequest().headers[4]?.key)}`,
+		`headers.length=${activeRequest().headers.length}`,
+	],
+);
+
 console.log(failed === 0 ? "\nall reactivity checks passed" : `\n${failed} check(s) failed`);
 process.exit(failed === 0 ? 0 : 1);

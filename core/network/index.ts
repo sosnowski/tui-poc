@@ -1,7 +1,10 @@
+import { resolve } from "node:path";
+
 import type { Environment, KV, RequestDetails, ResponseHeader, SampleResponse } from "../types";
 
 export interface ExecuteRequestOptions {
 	environment?: Environment;
+	dataDir?: string;
 }
 
 const BODY_METHODS = new Set(["POST", "PUT", "PATCH", "DELETE"]);
@@ -20,14 +23,22 @@ export async function executeRequest(
 			headers,
 		};
 
-		if (
-			BODY_METHODS.has(details.method) &&
-			details.body != null &&
-			details.bodyType !== "none"
-		) {
-			init.body = resolveVariables(details.body, options);
-			if (details.bodyType === "json" && !hasHeader(headers, "content-type")) {
-				headers.set("Content-Type", "application/json");
+		if (BODY_METHODS.has(details.method) && details.bodyType !== "none") {
+			const body = await buildRequestBody(details, options);
+			if (body != null) {
+				init.body = body;
+				if (details.bodyType === "json" && !hasHeader(headers, "content-type")) {
+					headers.set("Content-Type", "application/json");
+				}
+				if (
+					details.bodyType === "form-urlencoded" &&
+					!hasHeader(headers, "content-type")
+				) {
+					headers.set("Content-Type", "application/x-www-form-urlencoded");
+				}
+				if (details.bodyType === "binary" && !hasHeader(headers, "content-type")) {
+					headers.set("Content-Type", "application/octet-stream");
+				}
 			}
 		}
 
@@ -86,6 +97,34 @@ function buildHeaders(headers: KV[], options: ExecuteRequestOptions): Headers {
 
 function enabledRows(rows: KV[]): KV[] {
 	return rows.filter((row) => row.enabled !== false);
+}
+
+async function buildRequestBody(
+	details: RequestDetails,
+	options: ExecuteRequestOptions,
+): Promise<RequestInit["body"]> {
+	if (details.bodyType === "form-urlencoded") {
+		const params = new URLSearchParams();
+		for (const row of enabledRows(details.formUrlEncoded)) {
+			const key = resolveVariables(row.key, options).trim();
+			if (!key) continue;
+			params.append(key, resolveVariables(row.value, options));
+		}
+		return params.toString();
+	}
+
+	if (details.bodyType === "binary") {
+		if (!details.binaryFile?.path || !options.dataDir) return null;
+		const filePath = resolve(options.dataDir, details.binaryFile.path);
+		const root = resolve(options.dataDir);
+		if (!filePath.startsWith(root + "/") && filePath !== root) return null;
+		const file = Bun.file(filePath);
+		if (!(await file.exists())) return null;
+		return await file.arrayBuffer();
+	}
+
+	if (details.body == null) return null;
+	return resolveVariables(details.body, options);
 }
 
 function resolveVariables(value: string, options: ExecuteRequestOptions): string {

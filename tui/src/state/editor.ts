@@ -38,6 +38,19 @@ export function setBodyTypeCursor(i: number): void {
 	setBodyTypeCursorSig(i);
 }
 
+export type BodyCursor = { section: "type" | "form" | "binary"; row: number; col: 0 | 1 };
+
+const [bodyCursor, setBodyCursorSig] = createSignal<BodyCursor>({
+	section: "type",
+	row: 0,
+	col: 0,
+});
+export { bodyCursor };
+
+export function setBodyCursor(c: BodyCursor): void {
+	setBodyCursorSig(c);
+}
+
 export type AuthCursor = { row: 0 | 1; typeIndex: number };
 
 const [authCursor, setAuthCursorSig] = createSignal<AuthCursor>({ row: 0, typeIndex: 1 });
@@ -48,7 +61,7 @@ export function setAuthCursor(c: AuthCursor): void {
 }
 
 export type EditingCell = {
-	tab: "Params" | "PathParams" | "Headers" | "Url" | "Name";
+	tab: "Params" | "PathParams" | "Headers" | "Body" | "Url" | "Name";
 	row: number;
 	col: 0 | 1 | 2;
 	draft: string;

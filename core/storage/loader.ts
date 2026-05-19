@@ -126,9 +126,15 @@ async function loadRequestFile(baseDir: string, filePath: string): Promise<Loade
 			headers: normalizeKVArray(defaultPreset?.headers),
 			body: defaultPreset?.body ?? null,
 			bodyType: defaultPreset?.bodyType ?? "none",
+			formUrlEncoded: normalizeKVArray(defaultPreset?.formUrlEncoded),
+			binaryFile: defaultPreset?.binaryFile ?? null,
 		};
 
-		const filePresets = data.presets ?? null;
+		const filePresets = data.presets
+			? Object.fromEntries(
+					Object.entries(data.presets).map(([name, preset]) => [name, normalizePreset(preset)]),
+				)
+			: null;
 
 		return { request, details, filePresets };
 	} catch (err) {
@@ -140,4 +146,15 @@ async function loadRequestFile(baseDir: string, filePath: string): Promise<Loade
 function normalizeKVArray(arr: KV[] | undefined): KV[] {
 	if (!Array.isArray(arr)) return [];
 	return arr;
+}
+
+function normalizePreset(preset: Preset): Preset {
+	return {
+		...preset,
+		pathParams: normalizeKVArray(preset.pathParams),
+		params: normalizeKVArray(preset.params),
+		headers: normalizeKVArray(preset.headers),
+		formUrlEncoded: normalizeKVArray(preset.formUrlEncoded),
+		binaryFile: preset.binaryFile ?? null,
+	};
 }

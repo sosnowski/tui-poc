@@ -1,0 +1,21 @@
+{
+  "name": "POST request",
+  "method": "POST",
+  "url": "https://httpbun.com/post",
+  "presets": {
+    ":default": {
+      "pathParams": [],
+      "params": [],
+      "headers": [],
+      "body": null,
+      "bodyType": "form-urlencoded",
+      "formUrlEncoded": [
+        {
+          "key": "some-body",
+          "value": "some-body-value",
+          "enabled": true
+        }
+      ]
+    }
+  }
+}

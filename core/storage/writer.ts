@@ -24,6 +24,8 @@ function buildRequestFile(
 				headers: details.headers,
 				body: details.body,
 				bodyType: details.bodyType,
+				formUrlEncoded: details.formUrlEncoded,
+				binaryFile: details.binaryFile,
 			},
 		},
 	};

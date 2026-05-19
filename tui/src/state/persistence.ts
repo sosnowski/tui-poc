@@ -61,6 +61,8 @@ async function seedCollection(
 			headers: defaultPreset?.headers ?? [],
 			body: defaultPreset?.body ?? null,
 			bodyType: defaultPreset?.bodyType ?? "none",
+			formUrlEncoded: defaultPreset?.formUrlEncoded ?? [],
+			binaryFile: defaultPreset?.binaryFile ?? null,
 		};
 		await saveRequest(dataDir, colPath, req.name, details);
 	}

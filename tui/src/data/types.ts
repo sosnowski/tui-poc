@@ -2,6 +2,8 @@
 // TUI-only types (e.g. UI-specific) can still be added here.
 export {
 	HTTP_METHODS,
+	type BodyType,
+	type BinaryFile,
 	type HttpMethod,
 	type KV,
 	type Request,

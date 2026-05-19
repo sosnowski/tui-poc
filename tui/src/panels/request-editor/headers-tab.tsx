@@ -12,6 +12,7 @@ import {
 	updateEditingDraft,
 } from "../../state/store";
 import { vars } from "../../utils/highlight";
+import { HTTP_REQUEST_HEADER_OPTIONS, getHeaderValueOptions } from "../../data/http-headers";
 
 export function HeadersTab() {
 	useEditorHeadersScope();
@@ -42,6 +43,14 @@ export function HeadersTab() {
 				showDeleteColumn
 				cursorCol={headersCursor().col}
 				editing={editing()?.tab === "Headers" ? editing()! : undefined}
+				autocompleteOptions={({ row, col }) => {
+					if (col === 0) return HTTP_REQUEST_HEADER_OPTIONS;
+					if (col === 1) {
+						const key = r().headers[row]?.key;
+						return key ? getHeaderValueOptions(key) : undefined;
+					}
+					return undefined;
+				}}
 				onEditInput={updateEditingDraft}
 				onEditSubmit={commitEditingValue}
 			/>

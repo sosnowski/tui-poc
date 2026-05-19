@@ -1,7 +1,8 @@
 import { createMemo, createSignal } from "solid-js";
 
-import { executeRequest, slugify } from "@tuipostman/core";
+import { executeRequest, slugify, copyBinaryAttachment, deleteBinaryAttachment } from "@tuipostman/core";
 import type {
+	BodyType,
 	Collection,
 	HttpMethod,
 	KV,
@@ -10,6 +11,7 @@ import type {
 	RequestDetails,
 	SampleResponse,
 } from "../data/types";
+import { contentTypeForBodyType } from "../data/body-type-options";
 import { pushToast } from "./app";
 import { activeEnv } from "./environments";
 import {
@@ -21,6 +23,7 @@ import {
 	persistMoveRequest,
 	persistCreateCollection,
 	debouncedSaveRequest,
+	getDataDir,
 } from "./persistence";
 
 const [activeRequestId, setActiveRequestIdSig] = createSignal<string>("");
@@ -187,6 +190,8 @@ const EMPTY_REQUEST: RequestDetails = {
 	headers: [],
 	body: null,
 	bodyType: "none",
+	formUrlEncoded: [],
+	binaryFile: null,
 };
 
 const EMPTY_PRESET: Preset = {
@@ -195,6 +200,8 @@ const EMPTY_PRESET: Preset = {
 	headers: [],
 	body: null,
 	bodyType: "none",
+	formUrlEncoded: [],
+	binaryFile: null,
 };
 
 export const hasActiveRequest = createMemo<boolean>(() => {
@@ -223,6 +230,8 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 			headers: [],
 			body: null,
 			bodyType: "none",
+			formUrlEncoded: [],
+			binaryFile: null,
 		};
 	}
 
@@ -234,6 +243,8 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 		headers: activePreset.headers,
 		body: activePreset.body,
 		bodyType: activePreset.bodyType,
+		formUrlEncoded: activePreset.formUrlEncoded ?? [],
+		binaryFile: activePreset.binaryFile ?? null,
 	};
 });
 
@@ -244,6 +255,8 @@ function detailsToPreset(details: RequestDetails): Preset {
 		headers: details.headers,
 		body: details.body,
 		bodyType: details.bodyType,
+		formUrlEncoded: details.formUrlEncoded,
+		binaryFile: details.binaryFile,
 	};
 }
 
@@ -263,6 +276,8 @@ function updateActive(updater: (r: RequestDetails) => RequestDetails): void {
 					headers: next.headers,
 					body: next.body,
 					bodyType: next.bodyType,
+					formUrlEncoded: next.formUrlEncoded,
+					binaryFile: next.binaryFile,
 				},
 			},
 		};
@@ -557,7 +572,126 @@ function buildMergedDetails(id: string): RequestDetails {
 		headers: activePreset.headers,
 		body: activePreset.body,
 		bodyType: activePreset.bodyType,
+		formUrlEncoded: activePreset.formUrlEncoded ?? [],
+		binaryFile: activePreset.binaryFile ?? null,
 	};
+}
+
+function syncContentTypeHeader(headers: KV[], bodyType: BodyType): KV[] {
+	const contentType = contentTypeForBodyType(bodyType);
+	const idx = headers.findIndex((h) => h.key.trim().toLowerCase() === "content-type");
+
+	if (contentType === null) {
+		if (idx === -1) return headers;
+		return headers.map((h, i) => (i === idx ? { ...h, enabled: false } : h));
+	}
+
+	if (idx === -1) {
+		return [...headers, { key: "Content-Type", value: contentType, enabled: true }];
+	}
+
+	return headers.map((h, i) =>
+		i === idx ? { ...h, key: "Content-Type", value: contentType, enabled: true } : h,
+	);
+}
+
+export function setActiveBodyType(bodyType: BodyType): void {
+	updateActive((r) => ({
+		...r,
+		bodyType,
+		headers: syncContentTypeHeader(r.headers, bodyType),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function toggleFormUrlEncoded(idx: number): void {
+	updateActive((r) => ({
+		...r,
+		formUrlEncoded: r.formUrlEncoded.map((row, i) =>
+			i === idx ? { ...row, enabled: row.enabled === false ? true : false } : row,
+		),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function addFormUrlEncoded(index?: number): void {
+	updateActive((r) => ({
+		...r,
+		formUrlEncoded: insertKVRow(r.formUrlEncoded, index),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function deleteFormUrlEncoded(idx: number): void {
+	updateActive((r) => ({
+		...r,
+		formUrlEncoded: r.formUrlEncoded.filter((_, i) => i !== idx),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function setFormUrlEncodedCell(idx: number, col: 0 | 1, value: string): void {
+	updateActive((r) => ({
+		...r,
+		formUrlEncoded: r.formUrlEncoded.map((row, i) =>
+			i === idx ? (col === 0 ? { ...row, key: value } : { ...row, value }) : row,
+		),
+	}));
+	scheduleDebouncedSave();
+}
+
+export async function attachBinaryFile(sourcePath: string): Promise<void> {
+	const id = activeRequestId();
+	const req = findRequest(collections(), id);
+	const colPath = findCollectionPath(collections(), id);
+	if (!req || !colPath) return;
+
+	const trimmed = sourcePath.trim();
+	if (!trimmed) {
+		pushToast("file path cannot be empty", "err");
+		return;
+	}
+
+	try {
+		const activePresetName = getActivePresetName(id);
+		const current = activeRequest().binaryFile;
+		const binaryFile = await copyBinaryAttachment({
+			dataDir: getDataDir(),
+			collectionPath: colPath,
+			requestSlug: slugFromId(id),
+			presetName: activePresetName,
+			sourcePath: trimmed,
+		});
+
+		if (current) {
+			await deleteBinaryAttachment(getDataDir(), current);
+		}
+
+		updateActive((r) => ({
+			...r,
+			bodyType: "binary",
+			binaryFile,
+			headers: syncContentTypeHeader(r.headers, "binary"),
+		}));
+		scheduleDebouncedSave();
+		pushToast(`attached "${binaryFile.name}"`, "ok");
+	} catch (err) {
+		const message = err instanceof Error ? err.message : "failed to attach file";
+		pushToast(message, "err");
+	}
+}
+
+export async function clearBinaryFile(): Promise<void> {
+	const current = activeRequest().binaryFile;
+	if (!current) return;
+
+	await deleteBinaryAttachment(getDataDir(), current);
+	updateActive((r) => ({
+		...r,
+		binaryFile: null,
+	}));
+	scheduleDebouncedSave();
+	pushToast("attachment removed", "ok");
 }
 
 function insertChild(nodes: Collection[], parentId: string, child: Collection): Collection[] {
@@ -723,6 +857,8 @@ export function createNewRequest(method: HttpMethod): void {
 		headers: [],
 		body: null,
 		bodyType: "none",
+		formUrlEncoded: [],
+		binaryFile: null,
 	};
 	setPresetsMap((prev) => ({ ...prev, [id]: { ":default": defaultPreset } }));
 
@@ -735,6 +871,8 @@ export function createNewRequest(method: HttpMethod): void {
 		headers: [],
 		body: null,
 		bodyType: "none",
+		formUrlEncoded: [],
+		binaryFile: null,
 	};
 	persistSaveRequest(colPath, name, details, undefined, presets);
 
@@ -758,7 +896,10 @@ async function sendActiveRequest(): Promise<void> {
 	setResponseSig(null);
 
 	try {
-		const result = await executeRequest(activeRequest(), { environment: activeEnv() });
+		const result = await executeRequest(activeRequest(), {
+			environment: activeEnv(),
+			dataDir: getDataDir(),
+		});
 		setResponseSig(result);
 		if (result.status === 0) {
 			pushToast(`request failed · ${result.timeMs}ms`, "err");

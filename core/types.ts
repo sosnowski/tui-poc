@@ -23,12 +23,22 @@ export interface Collection {
 	requests: Request[];
 }
 
+export type BodyType = "none" | "json" | "form" | "form-urlencoded" | "binary";
+
+export interface BinaryFile {
+	name: string;
+	path: string;
+	sizeBytes?: number;
+}
+
 export interface Preset {
 	pathParams: KV[];
 	params: KV[];
 	headers: KV[];
 	body: string | null;
-	bodyType: "none" | "json" | "form" | "binary";
+	bodyType: BodyType;
+	formUrlEncoded: KV[];
+	binaryFile: BinaryFile | null;
 }
 
 export interface RequestDetails {
@@ -38,7 +48,9 @@ export interface RequestDetails {
 	params: KV[];
 	headers: KV[];
 	body: string | null;
-	bodyType: "none" | "json" | "form" | "binary";
+	bodyType: BodyType;
+	formUrlEncoded: KV[];
+	binaryFile: BinaryFile | null;
 }
 
 export interface RequestFile {

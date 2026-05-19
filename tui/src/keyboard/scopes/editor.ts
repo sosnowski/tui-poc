@@ -17,15 +17,24 @@ import { clamp, isPlainKey, printableChar } from "../helpers";
 import { useKeyScope } from "../use-key-scope";
 import type { KeyBinding } from "../types";
 import {
+	BODY_TYPE_COUNT,
+	bodyTypeFromOptionIndex,
+	bodyTypeToOptionIndex,
+} from "../../data/body-type-options";
+import {
 	activeRequest,
 	activeRequestId,
 	activeRequestName,
 	activeRequestPresetNames,
+	addFormUrlEncoded,
 	addHeader,
 	addQueryParam,
 	authCursor,
+	bodyCursor,
 	bodyTypeCursor,
 	cancelEditing,
+	clearBinaryFile,
+	deleteFormUrlEncoded,
 	deleteHeader,
 	deleteQueryParam,
 	editing,
@@ -38,8 +47,10 @@ import {
 	paramsCursor,
 	presetsCursor,
 	presetsExpanded,
+	setActiveBodyType,
 	setActivePresetForRequest,
 	setAuthCursor,
+	setBodyCursor,
 	setBodyTypeCursor,
 	setEditing,
 	setEditorTab,
@@ -47,12 +58,11 @@ import {
 	setParamsCursor,
 	setPresetsCursor,
 	setPresetsExpanded,
+	toggleFormUrlEncoded,
 	toggleHeader,
 	toggleParam,
 	togglePathParam,
 } from "../../state/store";
-
-const BODY_TYPE_COUNT = 5;
 const AUTH_TYPE_COUNT = 5;
 
 const editorActive = () => focusedPane() === "editor" && editing() === null;
@@ -323,17 +333,104 @@ export function useEditorBodyScope(): void {
 		id: "editor.body",
 		priority: 20,
 		active: editorActive,
-		bindings: (): KeyBinding[] => [
-			{
-				match: "right",
-				run: () => setBodyTypeCursor(clamp(bodyTypeCursor() + 1, 0, BODY_TYPE_COUNT - 1)),
-				hint: { k: "←→", label: "nav" },
-			},
-			{
-				match: "left",
-				run: () => setBodyTypeCursor(clamp(bodyTypeCursor() - 1, 0, BODY_TYPE_COUNT - 1)),
-			},
-		],
+		bindings: (): KeyBinding[] => {
+			const r = activeRequest();
+			const formRowCount = r.formUrlEncoded.length + 1;
+			const showFormTable = r.bodyType === "form-urlencoded";
+			const showBinaryPanel = r.bodyType === "binary";
+
+			return [
+				{
+					match: "down",
+					run: () => {
+						const c = bodyCursor();
+						if (c.section === "type") {
+							if (showFormTable) {
+								setBodyCursor({ section: "form", row: 0, col: 0 });
+								setBodyTypeCursor(bodyTypeToOptionIndex(r.bodyType));
+								return;
+							}
+							if (showBinaryPanel) {
+								setBodyCursor({ section: "binary", row: 0, col: 0 });
+								setBodyTypeCursor(bodyTypeToOptionIndex(r.bodyType));
+								return;
+							}
+							return false;
+						}
+						if (c.section !== "form") return false;
+						setBodyCursor({
+							...c,
+							row: clamp(c.row + 1, 0, formRowCount - 1),
+						});
+					},
+					hint: { k: "↑↓←→↵", label: "nav" },
+				},
+				{
+					match: "up",
+					run: () => {
+						const c = bodyCursor();
+						if (c.section === "binary") {
+							setBodyCursor({ section: "type", row: 0, col: 0 });
+							setBodyTypeCursor(bodyTypeToOptionIndex(r.bodyType));
+							return;
+						}
+						if (c.section === "form" && c.row === 0) {
+							setBodyCursor({ section: "type", row: 0, col: 0 });
+							setBodyTypeCursor(bodyTypeToOptionIndex(r.bodyType));
+							return;
+						}
+						if (c.section !== "form") return false;
+						setBodyCursor({ ...c, row: clamp(c.row - 1, 0, formRowCount - 1) });
+					},
+				},
+				{
+					match: "right",
+					run: () => {
+						const c = bodyCursor();
+						if (c.section === "type") {
+							setBodyTypeCursor(
+								clamp(bodyTypeCursor() + 1, 0, BODY_TYPE_COUNT - 1),
+							);
+							return;
+						}
+						setBodyCursor({ ...c, col: clamp(c.col + 1, 0, 1) as 0 | 1 });
+					},
+				},
+				{
+					match: "left",
+					run: () => {
+						const c = bodyCursor();
+						if (c.section === "type") {
+							setBodyTypeCursor(
+								clamp(bodyTypeCursor() - 1, 0, BODY_TYPE_COUNT - 1),
+							);
+							return;
+						}
+						setBodyCursor({ ...c, col: clamp(c.col - 1, 0, 1) as 0 | 1 });
+					},
+				},
+				{
+					match: (e) => (e.name === "return" || e.name === "enter") && !e.ctrl && !e.meta,
+					run: () => {
+						if (!startEditingBodyCell()) return false;
+					},
+				},
+				{
+					match: (e) => e.name === "space" || e.sequence === " ",
+					run: () => {
+						if (!toggleBodyHighlightedRow()) return false;
+					},
+					hint: { k: "space", label: "toggle" },
+				},
+				{
+					match: (e) => e.ctrl && e.name === "d",
+					run: () => {
+						if (!deleteBodyHighlightedRow()) return false;
+					},
+					hint: { k: "ctrl+d", label: "del row" },
+				},
+			];
+		},
 	});
 }
 
@@ -400,6 +497,71 @@ function startEditingRequestName(): void {
 			setEditing({ ...current, ignoreNextKey: undefined });
 		}
 	});
+}
+
+function startEditingBodyCell(): boolean {
+	const c = bodyCursor();
+	const r = activeRequest();
+
+	if (c.section === "type") {
+		const nextType = bodyTypeFromOptionIndex(bodyTypeCursor());
+		setActiveBodyType(nextType);
+		if (nextType === "form-urlencoded") {
+			setBodyCursor({ section: "form", row: 0, col: 0 });
+		} else if (nextType === "binary") {
+			setBodyCursor({ section: "binary", row: 0, col: 0 });
+		}
+		return true;
+	}
+
+	if (c.section === "binary" && r.bodyType === "binary") {
+		openModal("attachBinaryFile");
+		return true;
+	}
+
+	if (r.bodyType !== "form-urlencoded") return false;
+
+	if (c.row === r.formUrlEncoded.length) {
+		addFormUrlEncoded(c.row);
+		setBodyCursor({ section: "form", row: c.row, col: 0 });
+		setEditing({ tab: "Body", row: c.row, col: 0, draft: "", cursor: 0 });
+		return true;
+	}
+
+	const row = r.formUrlEncoded[c.row];
+	if (!row) return false;
+	const current = c.col === 0 ? row.key : row.value;
+	setEditing({ tab: "Body", row: c.row, col: c.col, draft: current, cursor: current.length });
+	return true;
+}
+
+function toggleBodyHighlightedRow(): boolean {
+	const c = bodyCursor();
+	const r = activeRequest();
+	if (c.section !== "form" || r.bodyType !== "form-urlencoded") return false;
+	if (!r.formUrlEncoded[c.row]) return false;
+	toggleFormUrlEncoded(c.row);
+	return true;
+}
+
+function deleteBodyHighlightedRow(): boolean {
+	const c = bodyCursor();
+	const r = activeRequest();
+
+	if (c.section === "binary" && r.bodyType === "binary") {
+		if (!r.binaryFile) return false;
+		void clearBinaryFile();
+		return true;
+	}
+
+	if (c.section !== "form" || r.bodyType !== "form-urlencoded") return false;
+	if (!r.formUrlEncoded[c.row]) return false;
+	deleteFormUrlEncoded(c.row);
+	setBodyCursor({
+		...c,
+		row: clamp(c.row, 0, r.formUrlEncoded.length - 1),
+	});
+	return true;
 }
 
 function startEditingHighlightedCell(): boolean {

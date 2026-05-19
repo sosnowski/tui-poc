@@ -19,6 +19,8 @@ export const REQUEST_PRESETS: Record<string, Record<string, Preset>> = {
 			],
 			body: null,
 			bodyType: "none",
+			formUrlEncoded: [],
+			binaryFile: null,
 		},
 	},
 	r2: {
@@ -34,6 +36,8 @@ export const REQUEST_PRESETS: Record<string, Record<string, Preset>> = {
 			],
 			body: null,
 			bodyType: "none",
+			formUrlEncoded: [],
+			binaryFile: null,
 		},
 	},
 	r3: {
@@ -54,6 +58,8 @@ export const REQUEST_PRESETS: Record<string, Record<string, Preset>> = {
   }
 }`,
 			bodyType: "json",
+			formUrlEncoded: [],
+			binaryFile: null,
 		},
 	},
 };

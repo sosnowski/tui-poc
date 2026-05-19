@@ -24,18 +24,41 @@
           "enabled": true
         },
         {
-          "key": "accept",
-          "value": "application/json",
+          "key": "Accept",
+          "value": "text/plain",
           "enabled": true
         },
         {
-          "key": "somethin",
-          "value": "something else",
+          "key": "Cache-Control",
+          "value": "max-age=3600",
+          "enabled": true
+        },
+        {
+          "key": "Accept-Language",
+          "value": "en-GB",
+          "enabled": true
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/octet-stream",
+          "enabled": true
+        },
+        {
+          "key": "Cookie",
+          "value": "something",
           "enabled": true
         }
       ],
       "body": null,
-      "bodyType": "none"
+      "bodyType": "binary",
+      "formUrlEncoded": [
+        {
+          "key": "some",
+          "value": "value",
+          "enabled": true
+        }
+      ],
+      "binaryFile": null
     }
   }
 }

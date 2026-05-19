@@ -7,6 +7,7 @@ import { TextAttributes } from "@opentui/core";
 import { theme } from "../state/store";
 import { blendHex } from "../utils/color";
 import { InlineInput } from "./inline-input";
+import { AutocompleteInput, type AutocompleteOption } from "./autocomplete-input";
 
 export interface KVRow {
 	key: string;
@@ -33,6 +34,11 @@ interface Props {
 	showDeleteColumn?: boolean;
 	cursorCol?: 0 | 1 | 2;
 	editing?: { row: number; col: 0 | 1 | 2; draft: string; cursor: number };
+	autocompleteOptions?: (ctx: {
+		row: number;
+		col: 0 | 1 | 2;
+		draft: string;
+	}) => AutocompleteOption[] | undefined;
 	onEditInput?: (value: string) => void;
 	onEditSubmit?: (value: string) => void;
 }
@@ -81,6 +87,7 @@ export function KVTable(props: Props) {
 							showDeleteColumn={props.showDeleteColumn}
 							cursorCol={props.cursorCol}
 							editing={props.editing}
+							autocompleteOptions={props.autocompleteOptions}
 							onEditInput={props.onEditInput}
 							onEditSubmit={props.onEditSubmit}
 						/>
@@ -155,6 +162,11 @@ function KVTableRow(props: {
 	showDeleteColumn?: boolean;
 	cursorCol?: 0 | 1 | 2;
 	editing?: { row: number; col: 0 | 1 | 2; draft: string; cursor: number };
+	autocompleteOptions?: (ctx: {
+		row: number;
+		col: 0 | 1 | 2;
+		draft: string;
+	}) => AutocompleteOption[] | undefined;
 	onEditInput?: (value: string) => void;
 	onEditSubmit?: (value: string) => void;
 }) {
@@ -177,8 +189,29 @@ function KVTableRow(props: {
 	const valueText = () =>
 		props.row.rawValue ?? (typeof props.row.value === "string" ? props.row.value : "");
 
+	const getAutocompleteOptions = (col: 0 | 1 | 2) =>
+		props.editing
+			? props.autocompleteOptions?.({
+					row: props.rowIndex,
+					col,
+					draft: props.editing.draft,
+				})
+			: undefined;
+
+	// While the row owns an active inline editor it may render an autocomplete
+	// dropdown that overflows below into the next row. Lift the row above its
+	// siblings (notably the "+ key" add row) so the absolute-positioned
+	// dropdown is painted last and isn't clipped by later siblings.
+	const isThisRowEditing = () =>
+		props.editing !== undefined && props.editing.row === props.rowIndex;
+
 	return (
-		<box flexDirection="row" flexShrink={0} height={1}>
+		<box
+			flexDirection="row"
+			flexShrink={0}
+			height={1}
+			zIndex={isThisRowEditing() ? 10 : 0}
+		>
 			{props.showCursorCol ? (
 				<box width={2} backgroundColor={rowTint()}>
 					<text fg={t().accent}>{props.row.cursor ? "▶ " : "  "}</text>
@@ -198,12 +231,13 @@ function KVTableRow(props: {
 				raw={isEditing(0)}
 			>
 				{isEditing(0) ? (
-					<InlineInput
+					<EditInput
 						value={props.editing!.draft}
 						width={props.keyWidth}
 						bg={activeCellBg()}
 						fg={t().accent}
 						cursorColor={t().accent}
+						options={getAutocompleteOptions(0)}
 						onInput={props.onEditInput}
 						onSubmit={(value) => props.onEditSubmit?.(value)}
 					/>
@@ -220,12 +254,13 @@ function KVTableRow(props: {
 				raw={isEditing(1)}
 			>
 				{isEditing(1) ? (
-					<InlineInput
+					<EditInput
 						value={props.editing!.draft}
 						flex
 						bg={activeCellBg()}
 						fg={t().accent}
 						cursorColor={t().accent}
+						options={getAutocompleteOptions(1)}
 						onInput={props.onEditInput}
 						onSubmit={(value) => props.onEditSubmit?.(value)}
 					/>
@@ -245,12 +280,13 @@ function KVTableRow(props: {
 					raw={isEditing(2)}
 				>
 					{isEditing(2) ? (
-						<InlineInput
+						<EditInput
 							value={props.editing!.draft}
 							flex
 							bg={activeCellBg()}
 							fg={t().accent}
 							cursorColor={t().accent}
+							options={getAutocompleteOptions(2)}
 							onInput={props.onEditInput}
 							onSubmit={(value) => props.onEditSubmit?.(value)}
 						/>
@@ -295,6 +331,47 @@ function KVCell(props: {
 				</text>
 			)}
 		</box>
+	);
+}
+
+function EditInput(props: {
+	value: string;
+	width?: number;
+	flex?: boolean;
+	bg: string;
+	fg: string;
+	cursorColor: string;
+	options?: AutocompleteOption[];
+	onInput?: (value: string) => void;
+	onSubmit: (value: string) => void;
+}) {
+	if (props.options && props.options.length > 0) {
+		return (
+			<AutocompleteInput
+				value={props.value}
+				width={props.width}
+				flex={props.flex}
+				bg={props.bg}
+				fg={props.fg}
+				cursorColor={props.cursorColor}
+				options={props.options}
+				onInput={props.onInput}
+				onSubmit={props.onSubmit}
+			/>
+		);
+	}
+
+	return (
+		<InlineInput
+			value={props.value}
+			width={props.width}
+			flex={props.flex}
+			bg={props.bg}
+			fg={props.fg}
+			cursorColor={props.cursorColor}
+			onInput={props.onInput}
+			onSubmit={props.onSubmit}
+		/>
 	);
 }
 
