@@ -265,7 +265,7 @@ function KVTableRow(props: {
 						onSubmit={(value) => props.onEditSubmit?.(value)}
 					/>
 				) : isColCursor(1) ? (
-					valueText()
+					typeof props.row.value === "string" ? valueText() : props.row.value
 				) : (
 					(props.row.value as any)
 				)}

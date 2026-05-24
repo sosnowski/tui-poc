@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 
-import type { Environment, KV, RequestDetails, ResponseHeader, SampleResponse } from "../types";
+import type { Environment, FormDataField, KV, RequestDetails, ResponseHeader, SampleResponse } from "../types";
 
 export interface ExecuteRequestOptions {
 	environment?: Environment;
@@ -38,6 +38,12 @@ export async function executeRequest(
 				}
 				if (details.bodyType === "binary" && !hasHeader(headers, "content-type")) {
 					headers.set("Content-Type", "application/octet-stream");
+				}
+				if (details.bodyType === "form") {
+					// FormData sets multipart boundary; a bare Content-Type header breaks it.
+					for (const key of [...headers.keys()]) {
+						if (key.toLowerCase() === "content-type") headers.delete(key);
+					}
 				}
 			}
 		}
@@ -99,6 +105,10 @@ function enabledRows(rows: KV[]): KV[] {
 	return rows.filter((row) => row.enabled !== false);
 }
 
+function enabledFormDataRows(rows: FormDataField[]): FormDataField[] {
+	return rows.filter((row) => row.enabled !== false);
+}
+
 async function buildRequestBody(
 	details: RequestDetails,
 	options: ExecuteRequestOptions,
@@ -111,6 +121,25 @@ async function buildRequestBody(
 			params.append(key, resolveVariables(row.value, options));
 		}
 		return params.toString();
+	}
+
+	if (details.bodyType === "form") {
+		const fd = new FormData();
+		for (const row of enabledFormDataRows(details.formData)) {
+			const key = resolveVariables(row.key, options).trim();
+			if (!key) continue;
+			if (row.valueType === "file" && row.file?.path && options.dataDir) {
+				const filePath = resolve(options.dataDir, row.file.path);
+				const root = resolve(options.dataDir);
+				if (!filePath.startsWith(root + "/") && filePath !== root) continue;
+				const file = Bun.file(filePath);
+				if (!(await file.exists())) continue;
+				fd.append(key, file, row.file.name);
+			} else if (row.valueType === "text") {
+				fd.append(key, resolveVariables(row.textValue, options));
+			}
+		}
+		return fd;
 	}
 
 	if (details.bodyType === "binary") {

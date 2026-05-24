@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 import type {
 	Collection,
+	FormDataField,
 	HttpMethod,
 	KV,
 	Preset,
@@ -127,6 +128,7 @@ async function loadRequestFile(baseDir: string, filePath: string): Promise<Loade
 			body: defaultPreset?.body ?? null,
 			bodyType: defaultPreset?.bodyType ?? "none",
 			formUrlEncoded: normalizeKVArray(defaultPreset?.formUrlEncoded),
+			formData: normalizeFormDataArray(defaultPreset?.formData),
 			binaryFile: defaultPreset?.binaryFile ?? null,
 		};
 
@@ -148,6 +150,17 @@ function normalizeKVArray(arr: KV[] | undefined): KV[] {
 	return arr;
 }
 
+function normalizeFormDataArray(arr: FormDataField[] | undefined): FormDataField[] {
+	if (!Array.isArray(arr)) return [];
+	return arr.map((row) => ({
+		key: row.key ?? "",
+		enabled: row.enabled,
+		valueType: row.valueType === "file" ? "file" : "text",
+		textValue: row.textValue ?? "",
+		file: row.file ?? null,
+	}));
+}
+
 function normalizePreset(preset: Preset): Preset {
 	return {
 		...preset,
@@ -155,6 +168,7 @@ function normalizePreset(preset: Preset): Preset {
 		params: normalizeKVArray(preset.params),
 		headers: normalizeKVArray(preset.headers),
 		formUrlEncoded: normalizeKVArray(preset.formUrlEncoded),
+		formData: normalizeFormDataArray(preset.formData),
 		binaryFile: preset.binaryFile ?? null,
 	};
 }

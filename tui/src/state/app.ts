@@ -31,7 +31,7 @@ export function cycleTheme(): ThemeKey {
 
 export type PaneId = "collections" | "editor" | "response";
 
-const [focusedPane, setFocusedPaneSig] = createSignal<PaneId>("editor");
+const [focusedPane, setFocusedPaneSig] = createSignal<PaneId>("collections");
 export { focusedPane };
 
 export function setFocusedPane(p: PaneId): void {
@@ -48,14 +48,27 @@ export function cyclePane(direction: 1 | -1 = 1): void {
 
 export type Modal = "splash" | "command" | "env" | "history" | "method" | "newMethod" | "newCollection" | "moveRequest" | "deleteConfirm" | "newPreset" | "attachBinaryFile" | null;
 
+export type AttachFileTarget =
+	| { kind: "binary" }
+	| { kind: "form-data"; rowIndex: number };
+
+const [attachFileTarget, setAttachFileTargetSig] = createSignal<AttachFileTarget | null>(null);
+export { attachFileTarget };
+
 const [modal, setModalSig] = createSignal<Modal>("splash");
 export { modal };
+
+export function openAttachFileModal(target: AttachFileTarget): void {
+	setAttachFileTargetSig(target);
+	setModalSig("attachBinaryFile");
+}
 
 export function openModal(m: Exclude<Modal, null>): void {
 	setModalSig(m);
 }
 
 export function closeModal(): void {
+	setAttachFileTargetSig(null);
 	setModalSig(null);
 }
 

@@ -31,6 +31,16 @@ export interface BinaryFile {
 	sizeBytes?: number;
 }
 
+export type FormDataValueType = "text" | "file";
+
+export interface FormDataField {
+	key: string;
+	enabled?: boolean;
+	valueType: FormDataValueType;
+	textValue: string;
+	file: BinaryFile | null;
+}
+
 export interface Preset {
 	pathParams: KV[];
 	params: KV[];
@@ -38,6 +48,7 @@ export interface Preset {
 	body: string | null;
 	bodyType: BodyType;
 	formUrlEncoded: KV[];
+	formData: FormDataField[];
 	binaryFile: BinaryFile | null;
 }
 
@@ -50,6 +61,7 @@ export interface RequestDetails {
 	body: string | null;
 	bodyType: BodyType;
 	formUrlEncoded: KV[];
+	formData: FormDataField[];
 	binaryFile: BinaryFile | null;
 }
 

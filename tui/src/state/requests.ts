@@ -1,9 +1,12 @@
 import { createMemo, createSignal } from "solid-js";
 
+import { resolve } from "node:path";
+
 import { executeRequest, slugify, copyBinaryAttachment, deleteBinaryAttachment } from "@tuipostman/core";
 import type {
 	BodyType,
 	Collection,
+	FormDataField,
 	HttpMethod,
 	KV,
 	Preset,
@@ -12,7 +15,8 @@ import type {
 	SampleResponse,
 } from "../data/types";
 import { contentTypeForBodyType } from "../data/body-type-options";
-import { pushToast } from "./app";
+import { DEFAULT_JSON_BODY, formatJsonText } from "../utils/json-body";
+import { pushToast, setFocusedPane } from "./app";
 import { activeEnv } from "./environments";
 import {
 	findCollectionPath,
@@ -24,6 +28,7 @@ import {
 	persistCreateCollection,
 	debouncedSaveRequest,
 	getDataDir,
+	getWorkingDir,
 } from "./persistence";
 
 const [activeRequestId, setActiveRequestIdSig] = createSignal<string>("");
@@ -191,6 +196,7 @@ const EMPTY_REQUEST: RequestDetails = {
 	body: null,
 	bodyType: "none",
 	formUrlEncoded: [],
+	formData: [],
 	binaryFile: null,
 };
 
@@ -201,6 +207,7 @@ const EMPTY_PRESET: Preset = {
 	body: null,
 	bodyType: "none",
 	formUrlEncoded: [],
+	formData: [],
 	binaryFile: null,
 };
 
@@ -231,6 +238,7 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 			body: null,
 			bodyType: "none",
 			formUrlEncoded: [],
+			formData: [],
 			binaryFile: null,
 		};
 	}
@@ -244,6 +252,7 @@ export const activeRequest = createMemo<RequestDetails>(() => {
 		body: activePreset.body,
 		bodyType: activePreset.bodyType,
 		formUrlEncoded: activePreset.formUrlEncoded ?? [],
+		formData: activePreset.formData ?? [],
 		binaryFile: activePreset.binaryFile ?? null,
 	};
 });
@@ -256,6 +265,7 @@ function detailsToPreset(details: RequestDetails): Preset {
 		body: details.body,
 		bodyType: details.bodyType,
 		formUrlEncoded: details.formUrlEncoded,
+		formData: details.formData,
 		binaryFile: details.binaryFile,
 	};
 }
@@ -277,6 +287,7 @@ function updateActive(updater: (r: RequestDetails) => RequestDetails): void {
 					body: next.body,
 					bodyType: next.bodyType,
 					formUrlEncoded: next.formUrlEncoded,
+					formData: next.formData,
 					binaryFile: next.binaryFile,
 				},
 			},
@@ -573,6 +584,7 @@ function buildMergedDetails(id: string): RequestDetails {
 		body: activePreset.body,
 		bodyType: activePreset.bodyType,
 		formUrlEncoded: activePreset.formUrlEncoded ?? [],
+		formData: activePreset.formData ?? [],
 		binaryFile: activePreset.binaryFile ?? null,
 	};
 }
@@ -596,12 +608,36 @@ function syncContentTypeHeader(headers: KV[], bodyType: BodyType): KV[] {
 }
 
 export function setActiveBodyType(bodyType: BodyType): void {
-	updateActive((r) => ({
-		...r,
-		bodyType,
-		headers: syncContentTypeHeader(r.headers, bodyType),
-	}));
+	updateActive((r) => {
+		const next: RequestDetails = {
+			...r,
+			bodyType,
+			headers: syncContentTypeHeader(r.headers, bodyType),
+		};
+		if (bodyType === "json" && (r.body === null || r.body.trim() === "")) {
+			next.body = DEFAULT_JSON_BODY;
+		}
+		return next;
+	});
 	scheduleDebouncedSave();
+}
+
+export function setActiveBody(body: string | null): void {
+	const current = activeRequest().body;
+	if (current === body) return;
+
+	updateActive((r) => ({ ...r, body }));
+	scheduleDebouncedSave();
+}
+
+export function formatActiveBodyIfValidJson(): void {
+	const body = activeRequest().body;
+	if (body == null || body.trim() === "") return;
+
+	const formatted = formatJsonText(body);
+	if (formatted !== null && formatted !== body) {
+		setActiveBody(formatted);
+	}
 }
 
 export function toggleFormUrlEncoded(idx: number): void {
@@ -640,6 +676,145 @@ export function setFormUrlEncodedCell(idx: number, col: 0 | 1, value: string): v
 	scheduleDebouncedSave();
 }
 
+function emptyFormDataField(): FormDataField {
+	return { key: "", valueType: "text", textValue: "", file: null, enabled: true };
+}
+
+function insertFormDataRow(rows: FormDataField[], index = rows.length): FormDataField[] {
+	const next = [...rows];
+	next.splice(index, 0, emptyFormDataField());
+	return next;
+}
+
+export function toggleFormData(idx: number): void {
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.map((row, i) =>
+			i === idx ? { ...row, enabled: row.enabled === false ? true : false } : row,
+		),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function addFormData(index?: number): void {
+	updateActive((r) => ({
+		...r,
+		formData: insertFormDataRow(r.formData, index),
+	}));
+	scheduleDebouncedSave();
+}
+
+export async function deleteFormData(idx: number): Promise<void> {
+	const row = activeRequest().formData[idx];
+	if (row?.file) {
+		await deleteBinaryAttachment(getDataDir(), row.file);
+	}
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.filter((_, i) => i !== idx),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function setFormDataKey(idx: number, value: string): void {
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.map((row, i) => (i === idx ? { ...row, key: value } : row)),
+	}));
+	scheduleDebouncedSave();
+}
+
+export function setFormDataTextValue(idx: number, value: string): void {
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.map((row, i) => (i === idx ? { ...row, textValue: value } : row)),
+	}));
+	scheduleDebouncedSave();
+}
+
+export async function toggleFormDataValueType(idx: number): Promise<void> {
+	const row = activeRequest().formData[idx];
+	if (!row) return;
+
+	if (row.valueType === "file" && row.file) {
+		await deleteBinaryAttachment(getDataDir(), row.file);
+	}
+
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.map((item, i) =>
+			i === idx
+				? {
+						...item,
+						valueType: item.valueType === "file" ? "text" : "file",
+						file: item.valueType === "file" ? null : item.file,
+					}
+				: item,
+		),
+	}));
+	scheduleDebouncedSave();
+}
+
+export async function attachFormDataFile(rowIndex: number, sourcePath: string): Promise<void> {
+	const id = activeRequestId();
+	const req = findRequest(collections(), id);
+	const colPath = findCollectionPath(collections(), id);
+	if (!req || !colPath) return;
+
+	const trimmed = sourcePath.trim();
+	if (!trimmed) {
+		pushToast("file path cannot be empty", "err");
+		return;
+	}
+
+	const row = activeRequest().formData[rowIndex];
+	if (!row) return;
+
+	try {
+		const activePresetName = getActivePresetName(id);
+		const current = row.file;
+		const resolvedPath = trimmed.startsWith("/")
+			? resolve(trimmed)
+			: resolve(getWorkingDir(), trimmed);
+		const file = await copyBinaryAttachment({
+			dataDir: getDataDir(),
+			collectionPath: colPath,
+			requestSlug: slugFromId(id),
+			presetName: activePresetName,
+			sourcePath: resolvedPath,
+			kind: "form",
+		});
+
+		if (current) {
+			await deleteBinaryAttachment(getDataDir(), current);
+		}
+
+		updateActive((r) => ({
+			...r,
+			formData: r.formData.map((item, i) =>
+				i === rowIndex ? { ...item, valueType: "file", file } : item,
+			),
+		}));
+		scheduleDebouncedSave();
+		pushToast(`attached "${file.name}"`, "ok");
+	} catch (err) {
+		const message = err instanceof Error ? err.message : "failed to attach file";
+		pushToast(message, "err");
+	}
+}
+
+export async function clearFormDataFile(rowIndex: number): Promise<void> {
+	const row = activeRequest().formData[rowIndex];
+	if (!row?.file) return;
+
+	await deleteBinaryAttachment(getDataDir(), row.file);
+	updateActive((r) => ({
+		...r,
+		formData: r.formData.map((item, i) => (i === rowIndex ? { ...item, file: null } : item)),
+	}));
+	scheduleDebouncedSave();
+}
+
 export async function attachBinaryFile(sourcePath: string): Promise<void> {
 	const id = activeRequestId();
 	const req = findRequest(collections(), id);
@@ -655,12 +830,15 @@ export async function attachBinaryFile(sourcePath: string): Promise<void> {
 	try {
 		const activePresetName = getActivePresetName(id);
 		const current = activeRequest().binaryFile;
+		const sourcePath = trimmed.startsWith("/")
+			? resolve(trimmed)
+			: resolve(getWorkingDir(), trimmed);
 		const binaryFile = await copyBinaryAttachment({
 			dataDir: getDataDir(),
 			collectionPath: colPath,
 			requestSlug: slugFromId(id),
 			presetName: activePresetName,
-			sourcePath: trimmed,
+			sourcePath,
 		});
 
 		if (current) {
@@ -858,6 +1036,7 @@ export function createNewRequest(method: HttpMethod): void {
 		body: null,
 		bodyType: "none",
 		formUrlEncoded: [],
+		formData: [],
 		binaryFile: null,
 	};
 	setPresetsMap((prev) => ({ ...prev, [id]: { ":default": defaultPreset } }));
@@ -872,6 +1051,7 @@ export function createNewRequest(method: HttpMethod): void {
 		body: null,
 		bodyType: "none",
 		formUrlEncoded: [],
+		formData: [],
 		binaryFile: null,
 	};
 	persistSaveRequest(colPath, name, details, undefined, presets);
@@ -909,5 +1089,6 @@ async function sendActiveRequest(): Promise<void> {
 		}
 	} finally {
 		setSendingSig(false);
+		setFocusedPane("response");
 	}
 }

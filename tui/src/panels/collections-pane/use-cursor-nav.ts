@@ -7,6 +7,7 @@ import {
 	activeRequestId,
 	collections,
 	openModal,
+	openRequestInEditor,
 	setActiveRequestId,
 	setDeleteRequestId,
 	setNewRequestTarget,
@@ -112,8 +113,21 @@ export function useCursorNav(args: UseCursorNavArgs) {
 				run: () => {
 					const item = currentItem();
 					if (!item) return;
-					if (item.kind === "directory") args.toggle(item.id);
-					else setActiveRequestId(item.id);
+					if (item.kind === "directory") {
+						args.toggle(item.id);
+						return;
+					}
+					openRequestInEditor(item.id);
+				},
+				when: itemIsRequestLike,
+				hint: { k: "↵", label: "open" },
+			},
+			{
+				match: (e) => (e.name === "return" || e.name === "enter") && !e.ctrl && !e.meta,
+				run: () => {
+					const item = currentItem();
+					if (!item || item.kind !== "directory") return;
+					args.toggle(item.id);
 				},
 			},
 			{

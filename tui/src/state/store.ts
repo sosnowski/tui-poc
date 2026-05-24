@@ -9,3 +9,4 @@ export * from "./editor";
 export * from "./editing-actions";
 export * from "./environments";
 export * from "./requests";
+export { getWorkingDir, getDataDir } from "./persistence";

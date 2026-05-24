@@ -4,7 +4,7 @@ export const BODY_TYPE_OPTIONS = [
 	{ id: "none", label: "none", bodyType: "none" as const },
 	{ id: "form-data", label: "form-data", bodyType: "form" as const },
 	{ id: "form-url", label: "x-www-form-urlencoded", bodyType: "form-urlencoded" as const },
-	{ id: "raw", label: "raw / json", bodyType: "json" as const },
+	{ id: "json", label: "json", bodyType: "json" as const },
 	{ id: "binary", label: "binary", bodyType: "binary" as const },
 ] as const;
 
@@ -13,7 +13,7 @@ export const BODY_TYPE_COUNT = BODY_TYPE_OPTIONS.length;
 export function bodyTypeToOptionId(bodyType: BodyType): string {
 	switch (bodyType) {
 		case "json":
-			return "raw";
+			return "json";
 		case "form":
 			return "form-data";
 		case "form-urlencoded":

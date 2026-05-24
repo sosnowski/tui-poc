@@ -5,17 +5,54 @@
   "presets": {
     ":default": {
       "pathParams": [],
-      "params": [],
-      "headers": [],
-      "body": null,
-      "bodyType": "form-urlencoded",
+      "params": [
+        {
+          "key": "",
+          "value": "",
+          "enabled": true
+        }
+      ],
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "enabled": true
+        }
+      ],
+      "body": "{\n  \"name\": \"Damian\",\n  \"surname\": \"Sosnowski\",\n  \"age\": 12,\n  \"city\": [\n    \"Lisbon\",\n    \"Madrid\"\n  ]\n}",
+      "bodyType": "json",
       "formUrlEncoded": [
         {
           "key": "some-body",
           "value": "some-body-value",
           "enabled": true
         }
-      ]
+      ],
+      "formData": [
+        {
+          "key": "file",
+          "enabled": true,
+          "valueType": "file",
+          "textValue": "",
+          "file": {
+            "name": "raffaels_angels.webp",
+            "path": "Httbun/post-request.default.form.1779545426698.raffaels_angels.webp",
+            "sizeBytes": 172608
+          }
+        },
+        {
+          "key": "file_2",
+          "enabled": true,
+          "valueType": "text",
+          "textValue": "some test here",
+          "file": null
+        }
+      ],
+      "binaryFile": {
+        "name": "3-HF-Babies-Medieval-Paintings-Look-Weird-innocent-beings.jpg",
+        "path": "Httbun/post-request.default.binary.1779541378090.3-HF-Babies-Medieval-Paintings-Look-Weird-innocent-beings.jpg",
+        "sizeBytes": 1417849
+      }
     }
   }
 }

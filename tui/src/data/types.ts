@@ -4,6 +4,8 @@ export {
 	HTTP_METHODS,
 	type BodyType,
 	type BinaryFile,
+	type FormDataField,
+	type FormDataValueType,
 	type HttpMethod,
 	type KV,
 	type Request,

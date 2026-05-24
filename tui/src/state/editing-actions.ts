@@ -1,7 +1,10 @@
 import { editing, setEditing } from "./editor";
 import {
+	activeRequest,
 	setActiveRequestName,
 	setActiveRequestUrl,
+	setFormDataKey,
+	setFormDataTextValue,
 	setFormUrlEncodedCell,
 	setHeaderCell,
 	setParamCell,
@@ -41,7 +44,16 @@ export function commitEditingValue(value: string): void {
 	}
 
 	if (current.tab === "Body") {
-		setFormUrlEncodedCell(current.row, current.col as 0 | 1, value);
+		const bodyType = activeRequest().bodyType;
+		if (bodyType === "form-urlencoded") {
+			setFormUrlEncodedCell(current.row, current.col as 0 | 1, value);
+		} else if (bodyType === "form") {
+			if (current.col === 0) {
+				setFormDataKey(current.row, value);
+			} else if (current.col === 2) {
+				setFormDataTextValue(current.row, value);
+			}
+		}
 		setEditing(null);
 		return;
 	}

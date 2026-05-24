@@ -6,9 +6,7 @@ import {
 	bodyCursor,
 	bodyTypeCursor,
 	setBodyTypeCursor,
-	theme,
 } from "../../state/store";
-import { renderJson } from "../../utils/json-view";
 import { RadioStrip } from "./radio-strip";
 import {
 	BODY_TYPE_OPTIONS,
@@ -16,7 +14,9 @@ import {
 	bodyTypeToOptionIndex,
 } from "../../data/body-type-options";
 import { FormUrlEncodedBody } from "./body-types/form-url-encoded-body";
+import { FormDataBody } from "./body-types/form-data-body";
 import { BinaryBody } from "./body-types/binary-body";
+import { JsonBody } from "./body-types/json-body";
 
 export function BodyTab() {
 	useEditorBodyScope();
@@ -25,13 +25,12 @@ export function BodyTab() {
 		setBodyTypeCursor(bodyTypeToOptionIndex(activeRequest().bodyType));
 	});
 
-	const t = () => theme();
 	const r = activeRequest;
 	const selectedId = () => bodyTypeToOptionId(r().bodyType);
 	const typeRowCursor = () => bodyCursor().section === "type";
 
 	return (
-		<box flexDirection="column" flexGrow={1}>
+		<box flexDirection="column" flexGrow={1} flexBasis={0}>
 			<RadioStrip
 				label="body type"
 				labelWidth={11}
@@ -41,6 +40,10 @@ export function BodyTab() {
 				options={[...BODY_TYPE_OPTIONS]}
 			/>
 
+			<Show when={r().bodyType === "form"}>
+				<FormDataBody />
+			</Show>
+
 			<Show when={r().bodyType === "form-urlencoded"}>
 				<FormUrlEncodedBody />
 			</Show>
@@ -49,23 +52,15 @@ export function BodyTab() {
 				<BinaryBody />
 			</Show>
 
-			<Show
-				when={
-					r().bodyType !== "form-urlencoded" &&
-					r().bodyType !== "binary" &&
-					r().body != null
-				}
-			>
-				<box flexDirection="column" paddingTop={1} paddingLeft={2}>
-					{r().bodyType === "json" ? (
-						<text>{renderJson(JSON.parse(r().body!))}</text>
-					) : (
-						<text fg={t().text}>{r().body!}</text>
-					)}
+			<Show when={r().bodyType === "json"}>
+				<box flexDirection="column" flexGrow={1} flexBasis={0}>
+					<JsonBody />
 				</box>
 			</Show>
 
-			<box flexGrow={1} />
+			<Show when={r().bodyType !== "json"}>
+				<box flexGrow={1} />
+			</Show>
 		</box>
 	);
 }

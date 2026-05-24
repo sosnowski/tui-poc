@@ -22,6 +22,7 @@ import {
 	setFocusedPane,
 	theme,
 	updateEditingDraft,
+	useSyncPresetsPanel,
 	type EditorTab,
 } from "../state/store";
 import { blendHex } from "../utils/color";
@@ -37,6 +38,7 @@ import { S } from "../components/styled-span";
 
 export function RequestEditor() {
 	useEditorScope();
+	useSyncPresetsPanel();
 
 	const t = () => theme();
 	const focused = () => focusedPane() === "editor";
@@ -127,7 +129,7 @@ export function RequestEditor() {
 
 function EditorTabContent() {
 	return (
-		<box flexGrow={1} flexDirection="column">
+		<box flexGrow={1} flexBasis={0} flexDirection="column">
 			<Show when={editorTab() === "Params"}>
 				<ParamsTab />
 			</Show>

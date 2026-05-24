@@ -9,6 +9,7 @@ export interface CopyBinaryAttachmentOptions {
 	requestSlug: string;
 	presetName: string;
 	sourcePath: string;
+	kind?: "binary" | "form";
 }
 
 export async function copyBinaryAttachment(
@@ -23,7 +24,8 @@ export async function copyBinaryAttachment(
 	const presetSlug =
 		opts.presetName.replace(/^:/, "").replace(/[^a-zA-Z0-9_-]/g, "-") || "default";
 	const timestamp = Date.now();
-	const destName = `${opts.requestSlug}.${presetSlug}.binary.${timestamp}.${originalName}`;
+	const kind = opts.kind ?? "binary";
+	const destName = `${opts.requestSlug}.${presetSlug}.${kind}.${timestamp}.${originalName}`;
 	const destDir = join(opts.dataDir, opts.collectionPath);
 	const destPath = join(destDir, destName);
 

@@ -41,7 +41,7 @@
         {
           "key": "Content-Type",
           "value": "application/octet-stream",
-          "enabled": true
+          "enabled": false
         },
         {
           "key": "Cookie",
@@ -50,7 +50,7 @@
         }
       ],
       "body": null,
-      "bodyType": "binary",
+      "bodyType": "none",
       "formUrlEncoded": [
         {
           "key": "some",
@@ -58,7 +58,11 @@
           "enabled": true
         }
       ],
-      "binaryFile": null
+      "binaryFile": {
+        "name": "balance.jpeg",
+        "path": "Httbun/get-request.default.binary.1779532633820.balance.jpeg",
+        "sizeBytes": 142222
+      }
     }
   }
 }

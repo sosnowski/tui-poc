@@ -1,4 +1,12 @@
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
+
+import { setFocusedPane } from "./app";
+import {
+	activeRequestId,
+	activeRequestPresetNames,
+	getActivePresetName,
+	setActiveRequestId,
+} from "./requests";
 
 export type EditorTab = "Params" | "Headers" | "Body" | "Auth" | "Tests";
 
@@ -38,7 +46,11 @@ export function setBodyTypeCursor(i: number): void {
 	setBodyTypeCursorSig(i);
 }
 
-export type BodyCursor = { section: "type" | "form" | "binary"; row: number; col: 0 | 1 };
+export type BodyCursor = {
+	section: "type" | "form" | "binary" | "json";
+	row: number;
+	col: 0 | 1 | 2;
+};
 
 const [bodyCursor, setBodyCursorSig] = createSignal<BodyCursor>({
 	section: "type",
@@ -97,4 +109,35 @@ export { presetsCursor };
 
 export function setPresetsCursor(i: number): void {
 	setPresetsCursorSig(i);
+}
+
+function syncPresetsPanelForActiveRequest(): void {
+	const id = activeRequestId();
+	if (!id) {
+		setPresetsExpanded(false);
+		return;
+	}
+
+	const names = activeRequestPresetNames();
+	const expanded = names.length > 1;
+	setPresetsExpanded(expanded);
+	if (expanded) {
+		const idx = names.indexOf(getActivePresetName(id));
+		setPresetsCursor(Math.max(0, idx));
+	}
+}
+
+/** Keep presets expanded when the active request has multiple presets. */
+export function useSyncPresetsPanel(): void {
+	createEffect(() => {
+		activeRequestId();
+		activeRequestPresetNames();
+		syncPresetsPanelForActiveRequest();
+	});
+}
+
+/** Select a request and move focus to the editor. */
+export function openRequestInEditor(requestId: string): void {
+	setActiveRequestId(requestId);
+	setFocusedPane("editor");
 }

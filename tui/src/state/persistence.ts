@@ -19,6 +19,10 @@ export function getDataDir(): string {
 	return dataDir;
 }
 
+export function getWorkingDir(): string {
+	return process.cwd();
+}
+
 export function setDataDir(dir: string): void {
 	dataDir = dir;
 }
@@ -62,6 +66,7 @@ async function seedCollection(
 			body: defaultPreset?.body ?? null,
 			bodyType: defaultPreset?.bodyType ?? "none",
 			formUrlEncoded: defaultPreset?.formUrlEncoded ?? [],
+			formData: defaultPreset?.formData ?? [],
 			binaryFile: defaultPreset?.binaryFile ?? null,
 		};
 		await saveRequest(dataDir, colPath, req.name, details);
